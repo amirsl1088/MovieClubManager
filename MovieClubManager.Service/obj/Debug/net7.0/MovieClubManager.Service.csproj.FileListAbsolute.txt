@@ -1,0 +1,17 @@
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.csproj.AssemblyReference.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.AssemblyInfoInputs.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.AssemblyInfo.cs
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.csproj.CoreCompileInputs.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\bin\Debug\net7.0\MovieClubManager.Service.deps.json
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\bin\Debug\net7.0\MovieClubManager.Service.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\bin\Debug\net7.0\MovieClubManager.Service.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\bin\Debug\net7.0\MovieClubManager.Contracts.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\bin\Debug\net7.0\MovieClubManager.Entities.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\bin\Debug\net7.0\MovieClubManager.Contracts.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\bin\Debug\net7.0\MovieClubManager.Entities.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.csproj.CopyComplete
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\refint\MovieClubManager.Service.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\MovieClubManager.Service.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Service\obj\Debug\net7.0\ref\MovieClubManager.Service.dll

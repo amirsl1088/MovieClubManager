@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "feuNmrzLz3bIKOwmYzW5+WCTqCBfs+WGcHvcJJR6aXI=",
+  "Source": "MovieClubManager.RestApi",
+  "BasePath": "_content/MovieClubManager.RestApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

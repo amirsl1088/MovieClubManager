@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Genres\Builders\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieClubManager.Persistence.EF\MovieClubManager.Persistence.EF.csproj" />
+    <ProjectReference Include="..\MovieClubManager.Service\MovieClubManager.Service.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\bin\Debug\net7.0\MovieClubManager.Entities.deps.json
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\bin\Debug\net7.0\MovieClubManager.Entities.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\bin\Debug\net7.0\MovieClubManager.Entities.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\MovieClubManager.Entities.csproj.AssemblyReference.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\MovieClubManager.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\MovieClubManager.Entities.AssemblyInfoInputs.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\MovieClubManager.Entities.AssemblyInfo.cs
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\MovieClubManager.Entities.csproj.CoreCompileInputs.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\MovieClubManager.Entities.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\refint\MovieClubManager.Entities.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\MovieClubManager.Entities.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Entities\obj\Debug\net7.0\ref\MovieClubManager.Entities.dll
