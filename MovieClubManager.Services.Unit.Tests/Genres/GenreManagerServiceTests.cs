@@ -11,7 +11,7 @@ using MovieClubManager.Test.Tools.Genres.Factories;
 using MovieClubManager.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using System.Reflection;
 
-namespace MovieClubManager.Services.Unit.Tests
+namespace MovieClubManager.Services.Unit.Tests.Genres
 {
     public class GenreManagerServiceTests
     {
@@ -35,7 +35,7 @@ namespace MovieClubManager.Services.Unit.Tests
 
 
             var actual = _readContext.Genres.Single();
-             actual.Title.Should().Be(dto.Title);
+            actual.Title.Should().Be(dto.Title);
         }
         [Fact]
         public async Task Get_gets_genre_information_properly()
@@ -46,7 +46,7 @@ namespace MovieClubManager.Services.Unit.Tests
             await _sut.GetAll();
 
             var actual = _readContext.Genres.First();
-             actual.Id.Should().Be(genre.Id);
+            actual.Id.Should().Be(genre.Id);
             actual.Title.Should().Be(genre.Title);
             actual.Rate.Should().Be(genre.Rate);
         }
@@ -60,7 +60,7 @@ namespace MovieClubManager.Services.Unit.Tests
             await _sut.Update(genre.Id, dto);
 
             var actual = _readContext.Genres.Single();
-             actual.Title.Should().Be(dto.Title);
+            actual.Title.Should().Be(dto.Title);
         }
         [Fact]
         public async Task Update_throws_exception_when_genreid_not_found_exception()
@@ -68,9 +68,9 @@ namespace MovieClubManager.Services.Unit.Tests
             var dummyid = 5;
             var dto = UpdateGenreDtoFactory.Create();
 
-            var actual =async ()=>await _sut.Update(dummyid, dto);
+            var actual = async () => await _sut.Update(dummyid, dto);
 
-           await actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
+            await actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
         }
         [Fact]
         public async Task Delete_delets_genre_from_table_genres_properly()

@@ -21,6 +21,7 @@ builder.Services.AddDbContext<EFDataContext>(
 builder.Services.AddScoped<GenreManagerService, GenreManagerAppService>();
 builder.Services.AddScoped<GenreManagerRepository, EFGenreManagerRepository>();
 builder.Services.AddScoped<UnitOfWork, EFUnitOfWork>();
+builder.Services.AddScoped<GenreService, GenreAppService>();
 
 
 var app = builder.Build();

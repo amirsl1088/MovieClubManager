@@ -15,21 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Infrastructure", "02.Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Peresentation", "03.Peresentation", "{132C6A4F-30D3-4B37-B45D-01ADE50D619E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.Contracts", "MovieClubManager.Contracts\MovieClubManager.Contracts.csproj", "{84D07386-A4F1-4F00-A4DE-FB8E0D70FBE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.Contracts", "MovieClubManager.Contracts\MovieClubManager.Contracts.csproj", "{84D07386-A4F1-4F00-A4DE-FB8E0D70FBE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.Entities", "MovieClubManager.Entities\MovieClubManager.Entities.csproj", "{CF33B9B6-98E9-444C-8573-11C0ADBB569F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.Entities", "MovieClubManager.Entities\MovieClubManager.Entities.csproj", "{CF33B9B6-98E9-444C-8573-11C0ADBB569F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.Service", "MovieClubManager.Service\MovieClubManager.Service.csproj", "{232C028B-43FE-46F7-8D00-72B576D38E7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.Service", "MovieClubManager.Service\MovieClubManager.Service.csproj", "{232C028B-43FE-46F7-8D00-72B576D38E7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.Migrations", "MovieClubManager.Migrations\MovieClubManager.Migrations.csproj", "{713821BF-917D-41A6-831C-0A6C83E5E6B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.Migrations", "MovieClubManager.Migrations\MovieClubManager.Migrations.csproj", "{713821BF-917D-41A6-831C-0A6C83E5E6B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.Persistence.EF", "MovieClubManager.Persistence.EF\MovieClubManager.Persistence.EF.csproj", "{37370B53-1D16-438A-B98D-A734597CB199}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.Persistence.EF", "MovieClubManager.Persistence.EF\MovieClubManager.Persistence.EF.csproj", "{37370B53-1D16-438A-B98D-A734597CB199}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.RestApi", "MovieClubManager.RestApi\MovieClubManager.RestApi.csproj", "{F2ACD2B5-ACCD-485C-92FE-7A248699DC4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.RestApi", "MovieClubManager.RestApi\MovieClubManager.RestApi.csproj", "{F2ACD2B5-ACCD-485C-92FE-7A248699DC4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.Services.Unit.Tests", "MovieClubManager.Services.Unit.Tests\MovieClubManager.Services.Unit.Tests.csproj", "{2BA7F1C3-620C-4DF5-A221-377CC0E75FF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.Services.Unit.Tests", "MovieClubManager.Services.Unit.Tests\MovieClubManager.Services.Unit.Tests.csproj", "{2BA7F1C3-620C-4DF5-A221-377CC0E75FF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClubManager.Test.Tools", "MovieClubManager.Test.Tools\MovieClubManager.Test.Tools.csproj", "{73AD4F88-F7A1-4C70-8899-E25A7E3056AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClubManager.Test.Tools", "MovieClubManager.Test.Tools\MovieClubManager.Test.Tools.csproj", "{73AD4F88-F7A1-4C70-8899-E25A7E3056AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
