@@ -9,7 +9,8 @@ namespace MovieClubManager.Service.Genres
     public class GenreManagerAppService : GenreManagerService
     {
         private readonly GenreManagerRepository _repository;
-        private UnitOfWork _unitOfWork;
+        private readonly UnitOfWork _unitOfWork;
+        
 
         public GenreManagerAppService(GenreManagerRepository eFGenreManagerRepository
             , UnitOfWork eFUnitOfWork)

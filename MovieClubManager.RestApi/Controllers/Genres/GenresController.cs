@@ -7,10 +7,10 @@ namespace MovieClubManager.RestApi.Controllers.Genres
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GenreController : ControllerBase
+    public class GenresController : ControllerBase
     {
         private readonly GenreService _service;
-        public GenreController(GenreService service)
+        public GenresController(GenreService service)
         {
             _service = service;
         }

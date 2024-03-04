@@ -2,8 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using MovieClubManager.Contracts.Interfaces;
 using MovieClubManager.Persistence.EF;
 using MovieClubManager.Persistence.EF.Genres;
+using MovieClubManager.Persistence.EF.Movies;
 using MovieClubManager.Service.Genres;
 using MovieClubManager.Service.Genres.Contracts;
+using MovieClubManager.Service.Movies;
+using MovieClubManager.Service.Movies.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +25,8 @@ builder.Services.AddScoped<GenreManagerService, GenreManagerAppService>();
 builder.Services.AddScoped<GenreManagerRepository, EFGenreManagerRepository>();
 builder.Services.AddScoped<UnitOfWork, EFUnitOfWork>();
 builder.Services.AddScoped<GenreService, GenreAppService>();
+builder.Services.AddScoped<MovieManagerService, MovieManagerAppService>();
+builder.Services.AddScoped<MovieManagerRepository, EFMovieManagerRepository>();
 
 
 var app = builder.Build();
