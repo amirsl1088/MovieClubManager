@@ -4,6 +4,6 @@ namespace MovieClubManager.Service.Genres.Contracts
 {
     public interface GenreService
     {
-        Task<List<GetGenreDto>?> GetAll();
+        Task<List<GetGenreDto>?> GetAll(GetGenreFilterDto? filterDto);
     }
 }

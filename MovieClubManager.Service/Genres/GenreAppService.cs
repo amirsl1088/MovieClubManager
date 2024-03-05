@@ -15,9 +15,9 @@ namespace MovieClubManager.Service.Genres
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<List<GetGenreDto>?> GetAll()
+        public async Task<List<GetGenreDto>?> GetAll(GetGenreFilterDto? filterDto)
         {
-           return await _repository.GetAll();
+           return await _repository.GetAll(filterDto);
         }
     }
 }

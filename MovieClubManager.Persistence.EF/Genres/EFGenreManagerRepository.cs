@@ -8,36 +8,42 @@ namespace MovieClubManager.Persistence.EF.Genres
 {
     public class EFGenreManagerRepository : GenreManagerRepository
     {
-        private EFDataContext _context;
+        private readonly DbSet<Genre> _genre;
 
         public EFGenreManagerRepository(EFDataContext context)
         {
-            _context = context;
+            _genre = context.Genres;
         }
 
         public void Add(Genre genre)
         {
-            _context.Genres.Add(genre);
+            _genre.Add(genre);
         }
 
         public void Delete(Genre genre)
         {
-            _context.Genres.Remove(genre);
+            _genre.Remove(genre);
         }
 
         public async Task<Genre?> FindGenreById(int id)
         {
-            return await _context.Genres.FirstOrDefaultAsync(_ => _.Id == id);
+            return await _genre.FirstOrDefaultAsync(_ => _.Id == id);
         }
 
-        public async Task<List<GetGenreDto>> GetAll()
+        public async Task<List<GetGenreDto>> GetAll(GetGenreFilterDto? filterDto)
         {
-            return await _context.Genres.Select(_ => new GetGenreDto
+            var genre = await _genre.Select(_ => new GetGenreDto
             {
                 Id = _.Id,
                 Title = _.Title,
                 Rate = _.Rate
             }).ToListAsync();
+            if (filterDto.Title != null)
+            {
+                genre = genre.Where(_ => _.Title == filterDto.Title).ToList();
+                return genre;
+            }
+            return genre;
         }
     }
 }

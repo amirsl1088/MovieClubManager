@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieClubManager.Entities.Genres;
 using MovieClubManager.Entities.Movies;
+using MovieClubManager.Entities.Users;
 
 namespace MovieClubManager.Persistence.EF;
 
@@ -17,6 +18,7 @@ public class EFDataContext : DbContext
 
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Movie> Movies { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

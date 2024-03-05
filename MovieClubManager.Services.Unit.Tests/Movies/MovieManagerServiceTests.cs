@@ -73,18 +73,18 @@ namespace MovieClubManager.Services.Unit.Tests.Movies
                 .Build();
             _context.Save(movie);
 
-            await _sut.GetAll();
+           var actual= await _sut.GetAll();
 
-            var actual = _readContext.Movies.First();
-            actual.Id.Should().Be(movie.Id);
-            actual.Name.Should().Be(movie.Name);
-            actual.PublishYear.Should().Be(movie.PublishYear);
-            actual.DailyPriceRent.Should().Be(movie.DailyPriceRent);
-            actual.DelayPenalty.Should().Be(movie.DelayPenalty);
-            actual.AgeLimit.Should().Be(movie.AgeLimit);
-            actual.Director.Should().Be(movie.Director);
-            actual.Duration.Should().Be(movie.Duration);
-            actual.GenreId.Should().Be(movie.GenreId);
+            
+            actual.First().Id.Should().Be(movie.Id);
+            actual.First().Name.Should().Be(movie.Name);
+            actual.First().PublishYear.Should().Be(movie.PublishYear);
+            actual.First().DailyPriceRent.Should().Be(movie.DailyPriceRent);
+            actual.First().DelayPenalty.Should().Be(movie.DelayPenalty);
+            actual.First().AgeLimit.Should().Be(movie.AgeLimit);
+            actual.First().Director.Should().Be(movie.Director);
+            actual.First().Duration.Should().Be(movie.Duration);
+            actual.First().GenreId.Should().Be(movie.GenreId);
         }
         [Fact]
         public async Task Update_updates_movie_properly()

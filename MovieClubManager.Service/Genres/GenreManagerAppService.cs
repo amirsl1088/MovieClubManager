@@ -10,7 +10,7 @@ namespace MovieClubManager.Service.Genres
     {
         private readonly GenreManagerRepository _repository;
         private readonly UnitOfWork _unitOfWork;
-        
+
 
         public GenreManagerAppService(GenreManagerRepository eFGenreManagerRepository
             , UnitOfWork eFUnitOfWork)
@@ -25,6 +25,8 @@ namespace MovieClubManager.Service.Genres
             {
                 Title = dto.Title
             };
+            
+            
             _repository.Add(genre);
             await _unitOfWork.Complete();
         }
@@ -36,19 +38,24 @@ namespace MovieClubManager.Service.Genres
             {
                 throw new GenreIdNotFoundException();
             }
+            var movieCount = genre.Movies.Count;
+            if (movieCount > 0)
+            {
+                throw new CannotDeleteGenresWitchTheyHaveSomeMoviesException();
+            }
             _repository.Delete(genre);
             await _unitOfWork.Complete();
 
         }
 
-        public async Task<List<GetGenreDto>?> GetAll()
+        public async Task<List<GetGenreDto>?> GetAll(GetGenreFilterDto? filterDto)
         {
-            return await _repository.GetAll();
+            return await _repository.GetAll(filterDto);
         }
 
         public async Task Update(int id, UpdateGenreDto dto)
         {
-            var genre =await _repository.FindGenreById(id);
+            var genre = await _repository.FindGenreById(id);
             if (genre == null)
             {
                 throw new GenreIdNotFoundException();

@@ -8,31 +8,31 @@ namespace MovieClubManager.Persistence.EF.Movies
 {
     public class EFMovieManagerRepository : MovieManagerRepository
     {
-        private EFDataContext _context;
+        private readonly DbSet<Movie> _movie;
 
         public EFMovieManagerRepository(EFDataContext context)
         {
-            _context = context;
+           _movie = context.Movies;
         }
 
         public void Add(Movie movie)
         {
-             _context.Movies.Add(movie);
+             _movie.Add(movie);
         }
 
         public void Delete(Movie movie)
         {
-            _context.Movies.Remove(movie);
+            _movie.Remove(movie);
         }
 
         public async Task<Movie?> FindMovieById(int id)
         {
-            return await _context.Movies.FirstOrDefaultAsync(_ => _.Id == id);
+            return await _movie.FirstOrDefaultAsync(_ => _.Id == id);
         }
 
         public async Task<List<GetMovieDto>> GetAll()
         {
-            return await _context.Movies.Select(_ => new GetMovieDto
+            return await _movie.Select(_ => new GetMovieDto
             {
                 Id = _.Id,
                 Name = _.Name,
@@ -40,7 +40,7 @@ namespace MovieClubManager.Persistence.EF.Movies
                 DailyPriceRent = _.DailyPriceRent,
                 DelayPenalty = _.DelayPenalty,
                 AgeLimit = _.AgeLimit,
-                Describtion = _.Describtion,
+                Description = _.Description,
                 Director = _.Director,
                 Duration = _.Duration,
                 GenreId = _.GenreId

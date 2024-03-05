@@ -16,7 +16,7 @@ namespace MovieClubManager.Migrations.Movies
             Create.Table("Movies")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Name").AsString(50).NotNullable()
-                .WithColumn("Describtion").AsString(250).Nullable()
+                .WithColumn("Description").AsString(250).Nullable()
                 .WithColumn("PublishYear").AsString(30).NotNullable()
                 .WithColumn("DailyPriceRent").AsInt32().NotNullable()
                 .WithColumn("AgeLimit").AsInt32().NotNullable()
@@ -24,7 +24,8 @@ namespace MovieClubManager.Migrations.Movies
                 .WithColumn("Duration").AsDouble().NotNullable()
                 .WithColumn("Count").AsInt32().WithDefaultValue(1)
                 .WithColumn("Director").AsString(50).NotNullable()
-                .WithColumn("GenreId").AsInt32().ForeignKey("FK_Movies_Genres", "Genres", "Id");
+                .WithColumn("GenreId").AsInt32().ForeignKey("FK_Movies_Genres", "Genres", "Id")
+                .WithColumn("Rate").AsDecimal().Nullable();
         }
         public override void Down()
         {

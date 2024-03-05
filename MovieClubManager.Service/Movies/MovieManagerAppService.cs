@@ -40,6 +40,7 @@ namespace MovieClubManager.Service.Movies
                 Duration = dto.Duration,
                 GenreId = genre.Id
             };
+           
             _repository.Add(movie);
             await _unitOfWork.Complete();
         }
@@ -73,7 +74,7 @@ namespace MovieClubManager.Service.Movies
                 throw new GenreIdNotFoundException();
             }
             movie.Name = dto.Name;
-            movie.Describtion = dto.Describtion;
+            movie.Description = dto.Description;
             movie.PublishYear = dto.PublishYear;
             movie.DailyPriceRent = dto.DailyPriceRent;
             movie.AgeLimit = dto.AgeLimit;

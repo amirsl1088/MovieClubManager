@@ -13,7 +13,7 @@ namespace MovieClubManager.Migrations.Genres
 
         public override void Up()
         {
-            Create.Table("genres")
+            Create.Table("Genres")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Title").AsString(50).NotNullable()
                 .WithColumn("Rate").AsInt32().WithDefaultValue(0);

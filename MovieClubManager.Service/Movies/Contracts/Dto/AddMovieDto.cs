@@ -21,6 +21,6 @@ namespace MovieClubManager.Service.Movies.Contracts.Dto
         public string Director { get; set; }
         [ForeignKey("GenreId")]
         public int GenreId { get; set; }
-        public string? Describtion { get; set; }
+        public string? Description { get; set; }
     }
 }

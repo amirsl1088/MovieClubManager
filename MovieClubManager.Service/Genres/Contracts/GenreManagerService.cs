@@ -6,7 +6,7 @@ namespace MovieClubManager.Service.Genres.Contracts
     {
         Task Add(AddGenreDto dto);
         Task Delete(int id);
-        Task<List<GetGenreDto>?> GetAll();
+        Task<List<GetGenreDto>?> GetAll(GetGenreFilterDto? filterdto);
         Task Update(int id, UpdateGenreDto dto);
     }
 }

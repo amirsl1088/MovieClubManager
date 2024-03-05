@@ -3,6 +3,7 @@ using MovieClubManager.Persistence.EF;
 using MovieClubManager.Persistence.EF.Genres;
 using MovieClubManager.Service.Genres;
 using MovieClubManager.Service.Genres.Contracts;
+using MovieClubManager.Service.Genres.Contracts.Dto;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using System;
@@ -30,13 +31,14 @@ namespace MovieClubManager.Services.Unit.Tests.Genres
         {
             var genre = new GenreBuilder().Build();
             _context.Save(genre);
+            var filter = new GetGenreFilterDto();
 
-            await _sut.GetAll();
+            var actual= await _sut.GetAll(filter);
 
-            var actual = _readContext.Genres.First();
-            actual.Id.Should().Be(genre.Id);
-            actual.Title.Should().Be(genre.Title);
-            actual.Rate.Should().Be(genre.Rate);
+            
+            actual.First().Id.Should().Be(genre.Id);
+            actual.First().Title.Should().Be(genre.Title);
+            actual.First().Rate.Should().Be(genre.Rate);
         }
 
     }

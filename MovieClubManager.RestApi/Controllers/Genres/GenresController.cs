@@ -15,9 +15,9 @@ namespace MovieClubManager.RestApi.Controllers.Genres
             _service = service;
         }
         [HttpGet]
-        public async Task<List<GetGenreDto>?> GetAll()
+        public async Task<List<GetGenreDto>?> GetAll([FromQuery]GetGenreFilterDto?filterDto)
         {
-            return await _service.GetAll();
+            return await _service.GetAll(filterDto);
         }
     }
 }

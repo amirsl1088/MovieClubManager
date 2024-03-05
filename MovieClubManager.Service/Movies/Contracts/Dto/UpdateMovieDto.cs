@@ -15,7 +15,7 @@ namespace MovieClubManager.Service.Movies.Contracts.Dto
         public int DelayPenalty { get; set; }
         public double Duration { get; set; }
         public string Director { get; set; }
-        public string? Describtion { get; set; }
+        public string? Description { get; set; }
         public int GenreId { get; set; }
     }
 }

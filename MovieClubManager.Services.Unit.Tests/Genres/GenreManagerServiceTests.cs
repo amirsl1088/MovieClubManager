@@ -1,4 +1,6 @@
 using FluentAssertions;
+using Moq;
+using MovieClubManager.Contracts.Interfaces;
 using MovieClubManager.Entities.Genres;
 using MovieClubManager.Persistence.EF;
 using MovieClubManager.Persistence.EF.Genres;
@@ -9,6 +11,7 @@ using MovieClubManager.Service.Genres.Exceptions;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Genres.Factories;
 using MovieClubManager.Test.Tools.Infrastructure.DatabaseConfig.Unit;
+using MovieClubManager.Test.Tools.Movies.Builders;
 using System.Reflection;
 
 namespace MovieClubManager.Services.Unit.Tests.Genres
@@ -38,17 +41,40 @@ namespace MovieClubManager.Services.Unit.Tests.Genres
             actual.Title.Should().Be(dto.Title);
         }
         [Fact]
+        public async Task Add_genre_with_mock_properly()
+        {
+            var dto = AddGenreDtoFactory.Create();
+            var repositoryMock = new Mock<GenreManagerRepository>();
+            var unitofworkMock = new Mock<UnitOfWork>();
+            var sut = new GenreManagerAppService(repositoryMock.Object, unitofworkMock.Object);
+
+            await sut.Add(dto);
+
+            repositoryMock.Verify(_ => _.Add(It.Is<Genre>(_ => _.Title == dto.Title)));
+            unitofworkMock.Verify(_ => _.Complete(), Times.Once);
+        }
+        [Fact]
         public async Task Get_gets_genre_information_properly()
         {
             var genre = new GenreBuilder().Build();
             _context.Save(genre);
+            var filter = new GetGenreFilterDto();
 
-            await _sut.GetAll();
+           var actual= await _sut.GetAll(filter);
 
-            var actual = _readContext.Genres.First();
-            actual.Id.Should().Be(genre.Id);
-            actual.Title.Should().Be(genre.Title);
-            actual.Rate.Should().Be(genre.Rate);
+            
+            actual.First().Id.Should().Be(genre.Id);
+            actual.First().Title.Should().Be(genre.Title);
+            actual.First().Rate.Should().Be(genre.Rate);
+        }
+        [Fact]
+        public async Task Get_gets_genre_imformation_with_mock_properly()
+        {
+            var genre = new GenreBuilder().Build();
+            _context.Save(genre);
+            var filter = new GetGenreFilterDto();
+
+            var actual = await _sut.GetAll(filter);
         }
         [Fact]
         public async Task Update_updates_title_of_genre_properly()
@@ -91,6 +117,20 @@ namespace MovieClubManager.Services.Unit.Tests.Genres
             var actual = async () => await _sut.Delete(dummyid);
 
             await actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
+        }
+        [Fact]
+        public async Task Delete_throws_exception_when_genre_movies_not_empty_exception()
+        {
+            var genre = new GenreBuilder().Build();
+            _context.Save(genre);
+            var movie = new MovieBuilder().WithGenreId(genre.Id)
+                .Build();
+            _context.Save(movie);
+
+            var actual = () => _sut.Delete(genre.Id);
+
+            await actual.Should().ThrowExactlyAsync<CannotDeleteGenresWitchTheyHaveSomeMoviesException>();
+
         }
     }
 }
