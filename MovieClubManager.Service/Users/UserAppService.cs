@@ -3,6 +3,7 @@ using MovieClubManager.Entities.Users;
 using MovieClubManager.Service.Users.Contrcts;
 using MovieClubManager.Service.Users.Contrcts.Dto;
 using MovieClubManager.Service.Users.Exceptions;
+using VideoClub.Contracts.Interfaces;
 
 namespace MovieClubManager.Service.Users
 {
@@ -10,10 +11,13 @@ namespace MovieClubManager.Service.Users
     {
         private readonly UserRepository _repository;
         private readonly UnitOfWork _unitOfWork;
-        public UserAppService(UserRepository repository, UnitOfWork unitOfWork)
+        private readonly DateTimeService _dateTimeService;
+        public UserAppService(UserRepository repository, UnitOfWork unitOfWork,
+            DateTimeService dateTimeService)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
+            _dateTimeService = dateTimeService;
 
         }
 
@@ -26,7 +30,8 @@ namespace MovieClubManager.Service.Users
                 Age = dto.Age,
                 Adress = dto.Adress,
                 MobileNumber = dto.MobileNumber,
-                Gender = dto.Gender
+                Gender = dto.Gender,
+                CreatedAt = _dateTimeService.Now()
             };
             _repository.Add(user);
             await _unitOfWork.Complete();

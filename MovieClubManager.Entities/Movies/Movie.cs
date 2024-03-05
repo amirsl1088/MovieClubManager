@@ -1,4 +1,5 @@
 ﻿using MovieClubManager.Entities.Genres;
+using MovieClubManager.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,6 +24,7 @@ namespace MovieClubManager.Entities.Movies
         public int GenreId { get; set; }
         public int? Count { get; set; } = 1;
         public decimal? Rate { get; set; }
+       
 
     }
 }

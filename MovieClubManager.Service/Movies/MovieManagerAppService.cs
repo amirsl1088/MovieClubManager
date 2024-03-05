@@ -56,9 +56,9 @@ namespace MovieClubManager.Service.Movies
             await _unitOfWork.Complete();
         }
 
-        public async Task<List<GetMovieDto>?> GetAll()
+        public async Task<List<GetMovieDto>?> GetAll(GetMovieFilterDto? filterDto)
         {
-            return await _repository.GetAll();
+            return await _repository.GetAll(filterDto);
         }
 
         public async Task Update(int id, UpdateMovieDto dto)

@@ -12,6 +12,8 @@ using MovieClubManager.Entities.Users;
 using MovieClubManager.Service.Users.Contrcts.Dto;
 using FluentAssertions;
 using MovieClubManager.Service.Users.Exceptions;
+using MovieClubManager.Test.Tools.Users.Builders;
+using MovieClubManager.Test.Tools.Users.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Update
 {
@@ -25,30 +27,14 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Update
             var db = new EFInMemoryDatabase();
             _context = db.CreateDataContext<EFDataContext>();
             _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = new UserAppService(new EFUserRepository(_context), new EFUnitOfWork(_context));
+            _sut = UserServiceFactory.Create(_context);
         }
         [Fact]
         public async Task Update_updates_users_imformation_properly()
         {
-            var user = new User
-            {
-                FirstName = "jyhgkj,",
-                LastName = "ukghjlk",
-                Age = 22,
-                Adress = "jyghjlk",
-                MobileNumber = "rfssyt",
-                Gender = Gender.female
-            };
+            var user = new UserBuilder().Build();
             _context.Save(user);
-            var dto = new UpdateUserDto
-            {
-               FirstName="dvv",
-               LastName="wefw",
-               Age=23,
-               Adress="rgverg",
-               Gender=Gender.male,
-               MobileNumber="wfwef"
-            };
+            var dto = UpdateUserDtoFactory.Create();
 
             await _sut.Update(user.Id, dto);
 
@@ -64,15 +50,7 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Update
         public async Task Update_throws_exception_when_userid_not_found_exception()
         {
             var dummyid = 5;
-            var dto = new UpdateUserDto
-            {
-                FirstName = "dvv",
-                LastName = "wefw",
-                Age = 23,
-                Adress = "rgverg",
-                Gender = Gender.male,
-                MobileNumber = "wfwef"
-            };
+            var dto = UpdateUserDtoFactory.Create();
 
             var actual = () => _sut.Update(dummyid, dto);
 

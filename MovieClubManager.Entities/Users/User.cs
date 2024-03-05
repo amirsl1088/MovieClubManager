@@ -17,6 +17,6 @@ namespace MovieClubManager.Entities.Users
         public string Adress { get; set; }
         public Gender Gender { get; set; }
         public int? Rate { get; set; }
-        public List<Movie> Movies { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

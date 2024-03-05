@@ -2926,6 +2926,7 @@
         "dependencies": {
           "Microsoft.Data.Sqlite.Core": "7.0.16",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.15",
+          "Moq": "4.20.70",
           "MovieClubManager.Persistence.EF": "1.0.0",
           "MovieClubManager.Service": "1.0.0"
         },

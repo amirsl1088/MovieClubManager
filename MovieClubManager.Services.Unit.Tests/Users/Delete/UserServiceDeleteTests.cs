@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using MovieClubManager.Entities.Users;
 using FluentAssertions;
 using MovieClubManager.Service.Users.Exceptions;
+using MovieClubManager.Test.Tools.Users.Builders;
+using MovieClubManager.Test.Tools.Users.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Delete
 {
@@ -24,20 +26,12 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Delete
             var db = new EFInMemoryDatabase();
             _context = db.CreateDataContext<EFDataContext>();
             _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = new UserAppService(new EFUserRepository(_context), new EFUnitOfWork(_context));
+            _sut = UserServiceFactory.Create(_context);
         }
         [Fact]
         public async Task Delete_delets_user_properly()
         {
-            var user = new User
-            {
-                FirstName = "jyhgkj,",
-                LastName = "ukghjlk",
-                Age = 22,
-                Adress = "jyghjlk",
-                MobileNumber = "rfssyt",
-                Gender = Gender.female
-            };
+            var user = new UserBuilder().Build();
             _context.Save(user);
 
             await _sut.Delete(user.Id);

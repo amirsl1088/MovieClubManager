@@ -17,5 +17,6 @@ namespace MovieClubManager.Service.Users.Contrcts.Dto
         public string Adress { get; set; }
         [Required]
         public Gender Gender { get; set; }
+       
     }
 }

@@ -30,9 +30,9 @@ namespace MovieClubManager.Persistence.EF.Movies
             return await _movie.FirstOrDefaultAsync(_ => _.Id == id);
         }
 
-        public async Task<List<GetMovieDto>> GetAll()
+        public async Task<List<GetMovieDto>> GetAll(GetMovieFilterDto? filterDto)
         {
-            return await _movie.Select(_ => new GetMovieDto
+            var movie= await _movie.Select(_ => new GetMovieDto
             {
                 Id = _.Id,
                 Name = _.Name,
@@ -45,6 +45,13 @@ namespace MovieClubManager.Persistence.EF.Movies
                 Duration = _.Duration,
                 GenreId = _.GenreId
             }).ToListAsync();
+            if(filterDto.Name != null)
+            {
+                movie = movie.Where(_ => _.Name.Contains(filterDto.Name)).ToList();
+                return movie;
+            }
+            return movie;
+
         }
     }
 }

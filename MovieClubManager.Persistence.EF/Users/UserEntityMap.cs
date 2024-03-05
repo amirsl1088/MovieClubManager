@@ -19,11 +19,9 @@ namespace MovieClubManager.Persistence.EF.Users
             builder.Property(_ => _.LastName).HasMaxLength(50).IsRequired();
             builder.Property(_ => _.Adress).HasMaxLength(200).IsRequired();
             builder.Property(_ => _.MobileNumber).HasMaxLength(20).IsRequired();
-            builder.Property(_ => _.Adress).HasMaxLength(200).IsRequired();
-            builder.Property(_ => _.Adress).HasMaxLength(200).IsRequired();
             builder.Property(_ => _.Age).IsRequired();
             builder.Property(_ => _.Gender).IsRequired();
-            builder.Property(_ => _.Rate);
+            builder.Property(_ => _.Rate).HasDefaultValue(0);
 
         }
     }

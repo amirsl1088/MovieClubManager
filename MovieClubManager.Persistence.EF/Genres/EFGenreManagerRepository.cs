@@ -38,9 +38,10 @@ namespace MovieClubManager.Persistence.EF.Genres
                 Title = _.Title,
                 Rate = _.Rate
             }).ToListAsync();
-            if (filterDto.Title != null)
+
+            if (filterDto.Title !=null)
             {
-                genre = genre.Where(_ => _.Title == filterDto.Title).ToList();
+                genre = genre.Where(_ => _.Title.Contains(filterDto.Title)).ToList();
                 return genre;
             }
             return genre;

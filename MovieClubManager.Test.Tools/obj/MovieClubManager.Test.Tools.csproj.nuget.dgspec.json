@@ -301,6 +301,10 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[7.0.15, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
             }
           },
           "imports": [

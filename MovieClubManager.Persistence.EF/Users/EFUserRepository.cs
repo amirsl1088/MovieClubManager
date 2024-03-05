@@ -41,7 +41,8 @@ namespace MovieClubManager.Persistence.EF.Users
                 Age = _.Age,
                 Gender = _.Gender,
                 MobileNumber = _.MobileNumber,
-                Rate = _.Rate
+                Rate = _.Rate,
+                CreatedAt=_.CreatedAt
             }).ToListAsync();
         }
     }

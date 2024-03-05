@@ -15,6 +15,7 @@ namespace MovieClubManager.Persistence.EF.Movies
         {
             builder.HasOne(_ => _.Genre)
                 .WithMany(_ => _.Movies);
+           
             builder.HasKey(_ => _.Id);
             builder.Property(_ => _.Id).ValueGeneratedOnAdd();
             builder.Property(_ => _.Name).IsRequired().HasMaxLength(50);
@@ -27,6 +28,7 @@ namespace MovieClubManager.Persistence.EF.Movies
             builder.Property(_ => _.Director).IsRequired().HasMaxLength(50);
             builder.Property(_ => _.Rate).HasMaxLength(5);
             builder.Property(_ => _.GenreId).IsRequired();
+          
 
 
         }

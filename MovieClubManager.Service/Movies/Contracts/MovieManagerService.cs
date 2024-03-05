@@ -6,7 +6,7 @@ namespace MovieClubManager.Service.Movies.Contracts
     {
         Task Add(AddMovieDto dto);
         Task Delete(int id);
-        Task<List<GetMovieDto>?> GetAll();
+        Task<List<GetMovieDto>?> GetAll(GetMovieFilterDto? filterDto);
         Task Update(int id, UpdateMovieDto dto);
     }
 }

@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MovieClubManager.Entities.Users;
 using FluentAssertions;
+using MovieClubManager.Test.Tools.Users.Builders;
+using MovieClubManager.Test.Tools.Users.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Get
 {
@@ -23,20 +25,12 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Get
             var db = new EFInMemoryDatabase();
             _context = db.CreateDataContext<EFDataContext>();
             _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = new UserAppService(new EFUserRepository(_context), new EFUnitOfWork(_context));
+            _sut = UserServiceFactory.Create(_context);
         }
         [Fact]
         public async Task Get_gets_users_imformation_properly()
         {
-            var user = new User
-            {
-                FirstName = "jyhgkj,",
-                LastName = "ukghjlk",
-                Age = 22,
-                Adress = "jyghjlk",
-                MobileNumber = "rfssyt",
-                Gender = Gender.female
-            };
+            var user = new UserBuilder().Build();
             _context.Save(user);
 
             var actual = await _sut.GetAll();
