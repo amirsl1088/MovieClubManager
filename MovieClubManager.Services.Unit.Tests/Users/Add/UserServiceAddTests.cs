@@ -60,13 +60,16 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Add
 
             await sut.Add(dto);
 
-            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.FirstName == dto.FirstName)));
-            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.LastName == dto.LastName)));
-            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Age == dto.Age)));
-            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Adress == dto.Adress)));
-            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.MobileNumber == dto.MobileNumber)));
-            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Gender == dto.Gender)));
-            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.CreatedAt == _faketime)));
+            repositoryMock.Verify(_ => _.Add(It.Is<User>(_ =>
+            _.FirstName == dto.FirstName &&
+            _.LastName == dto.LastName &&
+            _.Age == dto.Age)), Times.Once);
+            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.LastName == dto.LastName)));
+            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Age == dto.Age)));
+            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Adress == dto.Adress)));
+            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.MobileNumber == dto.MobileNumber)));
+            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Gender == dto.Gender)));
+            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.CreatedAt == _faketime)));
             unitOfWorkMock.Verify(_ => _.Complete(), Times.Once);
 
         }

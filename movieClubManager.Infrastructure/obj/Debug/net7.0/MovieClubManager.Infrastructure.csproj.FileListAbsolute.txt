@@ -1,0 +1,15 @@
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\bin\Debug\net7.0\MovieClubManager.Infrastructure.deps.json
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\bin\Debug\net7.0\MovieClubManager.Infrastructure.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\bin\Debug\net7.0\MovieClubManager.Infrastructure.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\bin\Debug\net7.0\MovieClubManager.Contracts.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\bin\Debug\net7.0\MovieClubManager.Contracts.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.AssemblyInfo.cs
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.csproj.CopyComplete
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\refint\MovieClubManager.Infrastructure.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\MovieClubManager.Infrastructure.pdb
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\movieClubManager.Infrastructure\obj\Debug\net7.0\ref\MovieClubManager.Infrastructure.dll

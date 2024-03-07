@@ -19,3 +19,4 @@ C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Test.T
 C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Test.Tools\bin\Debug\net7.0\MovieClubManager.Contracts.pdb
 C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Test.Tools\bin\Debug\net7.0\MovieClubManager.Entities.pdb
 C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Test.Tools\obj\Debug\net7.0\MovieClubManager.Test.Tools.csproj.CopyComplete
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.Test.Tools\bin\Debug\net7.0\appsettings.json

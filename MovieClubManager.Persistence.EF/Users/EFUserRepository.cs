@@ -45,5 +45,10 @@ namespace MovieClubManager.Persistence.EF.Users
                 CreatedAt=_.CreatedAt
             }).ToListAsync();
         }
+
+        public void Update(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

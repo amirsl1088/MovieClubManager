@@ -9,11 +9,11 @@ namespace MovieClubManager.Test.Tools.Genres.Factories
 {
     public static class UpdateGenreDtoFactory
     {
-        public static UpdateGenreDto Create()
+        public static UpdateGenreDto Create(string? title=null)
         {
             return new UpdateGenreDto
             {
-                Title = "gjfjhkj,"
+                Title =title?? "gjfjhkj,"
             };
         }
     }

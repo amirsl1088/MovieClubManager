@@ -14,6 +14,8 @@ using FluentAssertions;
 using MovieClubManager.Service.Users.Exceptions;
 using MovieClubManager.Test.Tools.Users.Builders;
 using MovieClubManager.Test.Tools.Users.Factories;
+using Moq;
+using MovieClubManager.Contracts.Interfaces;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Update
 {
@@ -55,6 +57,23 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Update
             var actual = () => _sut.Update(dummyid, dto);
 
             await actual.Should().ThrowExactlyAsync<UserIdNotFoundException>();
+        }
+
+        [Fact]
+        public async Task Update_updates_user_properly_with_mock()
+        {
+            var user = new UserBuilder().Build();
+            _context.Save(user);
+            var dto = UpdateUserDtoFactory.Create();
+            var repository = new Mock<UserRepository>();
+            var unitOfWork = new Mock<UnitOfWork>();
+            var sut = UserServiceFactory.Create(_context,userRepository: repository.Object,unitOfWork: unitOfWork.Object);
+            repository.Setup(_ => _.FindUserById(It.Is<int>(_ => _ == user.Id))).ReturnsAsync(user);
+
+            await _sut.Update(user.Id, dto);
+
+            //repository.Verify(_=>_.Update(), )
+            unitOfWork.Verify(_ => _.Complete(), Times.Once);
         }
     }
 }
