@@ -9,6 +9,6 @@ namespace MovieClubManager.Service.Users.Contrcts
        Task<List<GetUserDto>> GetAll();
         void Delete(User user);
         Task<User?> FindUserById(int id);
-        void Update(User user);
+        void Update();
     }
 }

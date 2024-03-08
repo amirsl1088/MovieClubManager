@@ -46,9 +46,9 @@ namespace MovieClubManager.Persistence.EF.Users
             }).ToListAsync();
         }
 
-        public void Update(User user)
+        public void Update()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

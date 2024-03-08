@@ -20,6 +20,7 @@ namespace MovieClubManager.Test.Tools.Users.Factories
                 Adress = "uhku.j",
                 MobileNumber = "ukhjh",
                 Gender = Gender.male,
+                CreatedAt = new DateTime(2024, 03, 07)
                 
             };
         }

@@ -21,6 +21,7 @@ namespace MovieClubManager.Migrations.Users
                 .WithColumn("MobileNumber").AsString(20).NotNullable()
                 .WithColumn("Age").AsInt32().NotNullable()
                 .WithColumn("Gender").AsInt16().NotNullable()
+                .WithColumn("CreatedAt").AsDateTime().NotNullable()
                 .WithColumn("Rate").AsInt32().Nullable().WithDefaultValue(0);
         }
         public override void Down()

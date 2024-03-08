@@ -66,7 +66,7 @@ namespace MovieClubManager.Service.Users
             user.Adress = updateUserDto.Adress;
             user.MobileNumber = updateUserDto.MobileNumber;
             user.Gender = updateUserDto.Gender;
-            _repository.Update(user);
+            
             await _unitOfWork.Complete();
         }
     }
