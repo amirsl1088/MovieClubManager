@@ -53,7 +53,7 @@ namespace MovieClubManager.Services.Unit.Tests.Movies.Add
             var dummyid = 5;
             var dto = AddMovieDtoFactory.Create(dummyid);
 
-            var actual = async () => await _sut.Add(dto);
+            var actual = ()=> _sut.Add(dto);
 
             await actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
 

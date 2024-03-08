@@ -35,6 +35,31 @@ namespace MovieClubManager.Test.Tools.Movies.Builders
             _movie.GenreId = genreid;
             return this;
         }
+        public MovieBuilder WithPulishYear(string pulishyear)
+        {
+            _movie.PublishYear = pulishyear;
+            return this;
+        }
+        public MovieBuilder WithDailyPercentRent(int price)
+        {
+            _movie.DailyPriceRent = price;
+            return this;
+        }
+        public MovieBuilder WithDelayPenalty(int delaypenalty)
+        {
+            _movie.DelayPenalty = delaypenalty;
+            return this;
+        }
+        public MovieBuilder WithDirector(string director)
+        {
+            _movie.Director = director;
+            return this;
+        }
+        public MovieBuilder WithDuration(double duration)
+        {
+            _movie.Duration = duration;
+            return this;
+        }
         public Movie Build()
         {
             return _movie;
