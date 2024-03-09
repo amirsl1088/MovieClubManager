@@ -9,6 +9,7 @@
       "MovieClubManager.RestApi/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "7.0.14",
+          "MovieClubManager.Infrastructure": "1.0.0",
           "MovieClubManager.Persistence.EF": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
@@ -570,6 +571,14 @@
           "MovieClubManager.Entities.dll": {}
         }
       },
+      "MovieClubManager.Infrastructure/1.0.0": {
+        "dependencies": {
+          "MovieClubManager.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "MovieClubManager.Infrastructure.dll": {}
+        }
+      },
       "MovieClubManager.Persistence.EF/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.16",
@@ -1039,6 +1048,11 @@
       "sha512": ""
     },
     "MovieClubManager.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MovieClubManager.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

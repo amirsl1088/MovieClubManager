@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MovieClubManager.Entities.Genres;
 using MovieClubManager.Entities.Movies;
+using MovieClubManager.Service.Genres.Exceptions;
 using MovieClubManager.Service.Movies.Contracts;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Movies.Builders;
@@ -15,17 +16,18 @@ using Xunit;
 
 namespace MovieClubManager.Spec.Tests.Movies
 {
-    [Scenario("ویرایش کردن فیلم")]
+    [Scenario("عدم امکان ویرایش کردن فیلم")]
     [Story("",
 AsA = "مدیر کلاب ",
 IWantTo = "فیلمی را ویرایش کنم  ",
 InOrderTo = "اطلاعات ان را را ویرایش کنم")]
-    public class UpdateMovieTest:BusinessIntegrationTest
+    public class UpdateMovieExceptionTest:BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Movie _movie;
         private Genre _genre;
-        public UpdateMovieTest()
+        private Func<Task>? _actual;
+        public UpdateMovieExceptionTest()
         {
             _sut = MovieManagerSerciceFactory.Create(SetupContext);
         }
@@ -35,7 +37,8 @@ InOrderTo = "اطلاعات ان را را ویرایش کنم")]
             " و قیمت جریمه ده هزار تومان" +
             " ومدت زمان صد و بیست دقیقه" +
             " و کارگردان نولان" +
-            " و با ژانر کمدی وجود دارد")]
+            "  و با ژانر کمدی وجود دارد" +
+            "و در فهرست ژانرها فقط کمدی وجود دارد")]
         [And("")]
         private void Given()
         {
@@ -59,21 +62,22 @@ InOrderTo = "اطلاعات ان را را ویرایش کنم")]
             " و قیمت جریمه پانزده هزار تومان" +
             " ومدت زمان صد و بیست دقیقه " +
             "و کارگردان نولان" +
-            " و با ژانر کمدی را دارم")]
-        private async Task When()
+            " و با ژانر ترسناک را دارم")]
+        private void When()
         {
-            var dto = UpdateMovieDtoFactory.Create(_genre.Id);
+            var dummyid = 5;
+            var dto = UpdateMovieDtoFactory.Create(dummyid);
             dto.Name = "اینتراستلار";
             dto.PublishYear = "2010";
             dto.DailyPriceRent = 250;
             dto.DelayPenalty = 15;
             dto.Duration = 120;
             dto.Director = "نولان";
-           
-            await _sut.Update(_movie.Id, dto);
+
+            _actual =  ()=> _sut.Update(_movie.Id, dto);
         }
 
-        [Then("فیلم مذکور باید به نام ایتراستلار" +
+        [Then("فیلم مذکور نباید به نام ایتراستلار" +
             " با سال انتشار دوهزار و ده" +
             " و با قیمت روزانه دویست" +
             " و پنجاه هزار تومان " +
@@ -81,16 +85,10 @@ InOrderTo = "اطلاعات ان را را ویرایش کنم")]
             "ومدت زمان صد و بیست دقیقه " +
             "و کارگردان نولان" +
             " و با ژانر کمدی ویرایش پیدا کرده باشد")]
-        private void Then()
+        [And("باید خطای عدم پیدا کردن ژانر نمایش داده شود")]
+        private async Task Then()
         {
-            var actual = ReadContext.Movies.FirstOrDefault(_ => _.Id == _movie.Id);
-            actual.Name.Should().Be("اینتراستلار");
-            actual.PublishYear.Should().Be("2010");
-            actual.DailyPriceRent.Should().Be(250);
-            actual.DelayPenalty.Should().Be(15);
-            actual.Duration.Should().Be(120);
-            actual.Director.Should().Be("نولان");
-            actual.GenreId.Should().Be(_genre.Id);
+            await _actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
         }
 
 
@@ -99,8 +97,9 @@ InOrderTo = "اطلاعات ان را را ویرایش کنم")]
         {
             Runner.RunScenario(
                 _ => Given(),
-                _ => When().Wait(),
-                _ => Then());
+                _ => When(),
+                _ => Then().Wait());
         }
     }
 }
+

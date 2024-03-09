@@ -77,3 +77,5 @@ C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.RestAp
 C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.RestApi\obj\Debug\net7.0\MovieClubManager.RestApi.pdb
 C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.RestApi\obj\Debug\net7.0\MovieClubManager.RestApi.genruntimeconfig.cache
 C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.RestApi\obj\Debug\net7.0\ref\MovieClubManager.RestApi.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.RestApi\bin\Debug\net7.0\MovieClubManager.Infrastructure.dll
+C:\Users\StockRayaneGostar\source\repos\MovieClubManager\MovieClubManager.RestApi\bin\Debug\net7.0\MovieClubManager.Infrastructure.pdb

@@ -7,7 +7,6 @@ using MovieClubManager.Service.Users.Contrcts;
 using MovieClubManager.Service.Users.Contrcts.Dto;
 using MovieClubManager.Test.Tools.Genres.Factories;
 using MovieClubManager.Test.Tools.Users.Factories;
-using MovieManager.Spec.Tests;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
 using System.Collections.Generic;
@@ -41,7 +40,10 @@ InOrderTo = "فیلم ها را اجاره کنم")]
 
         }
 
-        [When("من درخواست اضافه کردن کاربر با نام امیر و نام خانوادگی سلامت و سن بیست و سه و شماره \"09161502147\"و آدرس فلان و جنسیت مرد را دارم")]
+        [When("من درخواست اضافه کردن کاربر با نام امیر و نام خانوادگی سلامت" +
+            " و سن بیست و سه" +
+            " و شماره 09161502147و" +
+            " آدرس فلان و جنسیت مرد را دارم")]
         private async Task When()
         {
            
@@ -59,7 +61,10 @@ InOrderTo = "فیلم ها را اجاره کنم")]
 
         }
 
-        [Then("یک کاربر با نام امیرو نام خانوادگی سلامت و سن بیست و سه و شماره \"09161502147\"و آدرس فلان و جنسیت مرد باید در فهرست کاربرها وجود داشته باشد")]
+        [Then("یک کاربر با نام امیرو نام خانوادگی سلامت" +
+            " و سن بیست و سه " +
+            "و شماره 09161502147و" +
+            " آدرس فلان و جنسیت مرد باید در فهرست کاربرها وجود داشته باشد")]
         private void Then()
         {
             var actual = ReadContext.Users.Single();

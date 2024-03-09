@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoClub.Contracts.Interfaces
+namespace MovieClubManager.Contracts.Interfaces
 {
     public interface DateTimeService
     {

@@ -1111,6 +1111,19 @@
           "bin/placeholder/MovieClubManager.Entities.dll": {}
         }
       },
+      "MovieClubManager.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "MovieClubManager.Contracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MovieClubManager.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieClubManager.Infrastructure.dll": {}
+        }
+      },
       "MovieClubManager.Persistence.EF/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -3195,6 +3208,11 @@
       "path": "../MovieClubManager.Entities/MovieClubManager.Entities.csproj",
       "msbuildProject": "../MovieClubManager.Entities/MovieClubManager.Entities.csproj"
     },
+    "MovieClubManager.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../movieClubManager.Infrastructure/MovieClubManager.Infrastructure.csproj",
+      "msbuildProject": "../movieClubManager.Infrastructure/MovieClubManager.Infrastructure.csproj"
+    },
     "MovieClubManager.Persistence.EF/1.0.0": {
       "type": "project",
       "path": "../MovieClubManager.Persistence.EF/MovieClubManager.Persistence.EF.csproj",
@@ -3209,6 +3227,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.AspNetCore.OpenApi >= 7.0.14",
+      "MovieClubManager.Infrastructure >= 1.0.0",
       "MovieClubManager.Persistence.EF >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
@@ -3240,6 +3259,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\StockRayaneGostar\\source\\repos\\MovieClubManager\\movieClubManager.Infrastructure\\MovieClubManager.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\StockRayaneGostar\\source\\repos\\MovieClubManager\\movieClubManager.Infrastructure\\MovieClubManager.Infrastructure.csproj"
+            },
             "C:\\Users\\StockRayaneGostar\\source\\repos\\MovieClubManager\\MovieClubManager.Persistence.EF\\MovieClubManager.Persistence.EF.csproj": {
               "projectPath": "C:\\Users\\StockRayaneGostar\\source\\repos\\MovieClubManager\\MovieClubManager.Persistence.EF\\MovieClubManager.Persistence.EF.csproj"
             }

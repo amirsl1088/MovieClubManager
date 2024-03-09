@@ -5,7 +5,6 @@ using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Genres.Factories;
 using MovieClubManager.Test.Tools.Movies.Builders;
 using MovieClubManager.Test.Tools.Movies.Factories;
-using MovieManager.Spec.Tests;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
 using System.Collections.Generic;
@@ -38,7 +37,13 @@ InOrderTo = "فیلم ها را اجاره دهم")]
             Save(_genre);
         }
 
-        [When("من درخواست اضافه کردن فیلم به کلاب با اسم اینسپشن با سال انتشار دوهزار و پنج و با قیمت روزانه دیویصد هزار تومان و قیمت جریمه ده هزار تومان ومدت زمان صد و بیست دقیقه و کارگردان نولان و با ژانر کمدی  به فهرست فیلم ها اضافه مینکنم.\r\n")]
+        [When("من درخواست اضافه کردن فیلم به کلاب با اسم اینسپشن" +
+            " با سال انتشار دوهزار و پنج " +
+            "و با قیمت روزانه دویست هزار تومان" +
+            " و قیمت جریمه ده هزار تومان " +
+            "ومدت زمان صد و بیست دقیقه" +
+            " و کارگردان نولان" +
+            " و با ژانر کمدی  به فهرست فیلم ها اضافه مینکنم")]
         private async Task When()
         {
             var dto = new AddMovieDtoBuilder().WithName("اینسپشن")
@@ -53,7 +58,13 @@ InOrderTo = "فیلم ها را اجاره دهم")]
 
         }
 
-        [Then("یک فیلم با اسم اینسپشن با سال انتشار دوهزار و پنج و با قیمت روزانه دیویصد هزار تومان و قیمت جریمه ده هزار تومان ومدت زمان صد و بیست دقیقه و کارگردان نولان و با ژانر کمدی  باید فهرست فیلم ها اضافه شده باشد.\r\n")]
+        [Then("یک فیلم با اسم اینسپشن" +
+            " با سال انتشار دوهزار و پنج " +
+            "و با قیمت روزانه دویست هزار تومان" +
+            " و قیمت جریمه ده هزار تومان" +
+            " ومدت زمان صد و بیست دقیقه" +
+            " و کارگردان نولان" +
+            " و با ژانر کمدی  باید فهرست فیلم ها اضافه شده باشد")]
         private void Then()
         {
             var actual = ReadContext.Movies.Single();

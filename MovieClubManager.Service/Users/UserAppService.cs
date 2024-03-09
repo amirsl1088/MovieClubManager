@@ -3,7 +3,6 @@ using MovieClubManager.Entities.Users;
 using MovieClubManager.Service.Users.Contrcts;
 using MovieClubManager.Service.Users.Contrcts.Dto;
 using MovieClubManager.Service.Users.Exceptions;
-using VideoClub.Contracts.Interfaces;
 
 namespace MovieClubManager.Service.Users
 {

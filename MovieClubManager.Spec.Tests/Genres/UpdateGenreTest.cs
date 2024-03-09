@@ -4,7 +4,6 @@ using MovieClubManager.Service.Genres.Contracts;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Genres.Factories;
 using MovieClubManager.Test.Tools.Infrastructure.DatabaseConfig.Unit;
-using MovieManager.Spec.Tests;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
 using System.Collections.Generic;

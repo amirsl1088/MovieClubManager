@@ -3,7 +3,6 @@ using MovieClubManager.Entities.Genres;
 using MovieClubManager.Service.Genres.Contracts;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Genres.Factories;
-using MovieManager.Spec.Tests;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
 using System.Collections.Generic;

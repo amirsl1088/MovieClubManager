@@ -5,7 +5,6 @@ using MovieClubManager.Service.Movies.Contracts;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Movies.Builders;
 using MovieClubManager.Test.Tools.Movies.Factories;
-using MovieManager.Spec.Tests;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
 using System.Collections.Generic;
@@ -38,8 +37,14 @@ InOrderTo = "فیلم ها را اجاره دهم")]
 
         }
 
-        [When("من درخواست اضافه کردن فیلم به کلاب با اسم اینسپشن با سال انتشار دوهزار و پنج و با قیمت روزانه دویست هزار تومان و قیمت جریمه ده هزار تومان ومدت زمان صد و بیست دقیقه و کارگردان نولان و بدون ژانر  به فهرست فیلم ها را دارم")]
-        private async Task When()
+        [When("من درخواست اضافه کردن فیلم به کلاب با اسم اینسپشن " +
+            "با سال انتشار دوهزار و پنج " +
+            "و با قیمت روزانه دویست هزار تومان " +
+            "و قیمت جریمه ده هزار تومان " +
+            "ومدت زمان صد و بیست دقیقه " +
+            "و کارگردان نولان " +
+            "و بدون ژانر  به فهرست فیلم ها را دارم")]
+        private void When()
         {
             var dummyid = 7;
             var dto = new AddMovieDtoBuilder().WithName("اینسپشن")
@@ -55,9 +60,9 @@ InOrderTo = "فیلم ها را اجاره دهم")]
         }
 
         [Then("خطای عدم امکان ثبت فیلم بدون ژانر باید نشان داده شود")]
-        private void Then()
+        private async Task Then()
         {
-            _actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
+           await _actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
         }
 
 
@@ -66,8 +71,8 @@ InOrderTo = "فیلم ها را اجاره دهم")]
         {
             Runner.RunScenario(
                 _ => Given(),
-                _ => When().Wait(),
-                _ => Then());
+                _ => When(),
+                _ => Then().Wait());
         }
     }
 }

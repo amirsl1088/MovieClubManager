@@ -3,7 +3,6 @@ using MovieClubManager.Entities.Users;
 using MovieClubManager.Service.Users.Contrcts;
 using MovieClubManager.Service.Users.Contrcts.Dto;
 using MovieClubManager.Test.Tools.Users.Factories;
-using MovieManager.Spec.Tests;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,10 @@ InOrderTo = "اطلاعات آن را ویرایش کنم")]
             Save(_user);
         }
 
-        [When("من درخواست ویرایش کردن کاربر مذکور به نام رضا و نام خانوادگی مهری و سن بیست و هفت و شماره \"09161502157\"و آدرس بهمان و جنسیت مرد را دارم")]
+        [When("من درخواست ویرایش کردن کاربر مذکور به نام رضا و نام خانوادگی مهری" +
+            " و سن بیست و هفت " +
+            "و شماره 09161502157و" +
+            " آدرس بهمان و جنسیت مرد را دارم")]
         private async Task When()
         {
 
@@ -63,7 +65,10 @@ InOrderTo = "اطلاعات آن را ویرایش کنم")]
 
         }
 
-        [Then("کاربر مذکور باید به نام رضا و نام خانوادگی مهری و سن بیست و هفت و شماره \"09161502157\"و آدرس بهمان و جنسیت مرد ویرایش شده باشد")]
+        [Then("کاربر مذکور باید به نام رضا و نام خانوادگی مهری" +
+            " و سن بیست و هفت" +
+            " و شماره 09161502157و" +
+            " آدرس بهمان و جنسیت مرد ویرایش شده باشد")]
         private void Then()
         {
             var actual = ReadContext.Users.Single();

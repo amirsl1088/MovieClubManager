@@ -1,7 +1,7 @@
 using MovieClubManager.Infrastructure.Tools;
 using System.Linq.Expressions;
 
-namespace MovieManager.Spec.Tests
+namespace MovieClubManager.Spec.Tests
 {
     public static class Runner
     {

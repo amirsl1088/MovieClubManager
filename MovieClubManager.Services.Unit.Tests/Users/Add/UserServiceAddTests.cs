@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VideoClub.Contracts.Interfaces;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Add
 {

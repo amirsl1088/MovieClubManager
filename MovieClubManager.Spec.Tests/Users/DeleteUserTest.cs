@@ -3,7 +3,6 @@ using MovieClubManager.Entities.Users;
 using MovieClubManager.Service.Users.Contrcts;
 using MovieClubManager.Service.Users.Contrcts.Dto;
 using MovieClubManager.Test.Tools.Users.Factories;
-using MovieManager.Spec.Tests;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
 using System.Collections.Generic;
@@ -28,7 +27,10 @@ InOrderTo = "اطلاعات آن را حذف کنم")]
         {
             _sut = UserServiceFactory.Create(SetupContext);
         }
-        [Given("کاربری  با نام امیرو نام خانوادگی سلامت و سن بیست و سه و شماره \"09161502147\"و آدرس فلان و جنسیت مرد وجود دارد")]
+        [Given("کاربری  با نام امیرو نام خانوادگی سلامت" +
+            " و سن بیست و سه" +
+            " و شماره 09161502147و" +
+            " آدرس فلان و جنسیت مرد وجود دارد")]
         [And("")]
         private void Given()
         {
