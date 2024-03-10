@@ -15,17 +15,14 @@ using System.Threading.Tasks;
 
 namespace MovieClubManager.Services.Unit.Tests.GenreManagers.Add
 {
-    public class GenreManagerServiceAddTests
+    public class GenreManagerServiceAddTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+       
         private readonly GenreManagerService _sut;
         public GenreManagerServiceAddTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = GenreManagerServiceFactory.Create(_context);
+           
+            _sut = GenreManagerServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Add_adds_one_new_genre_properly()
@@ -35,7 +32,7 @@ namespace MovieClubManager.Services.Unit.Tests.GenreManagers.Add
             await _sut.Add(dto);
 
 
-            var actual = _readContext.Genres.Single();
+            var actual = ReadContext.Genres.Single();
             actual.Title.Should().Be(dto.Title);
         }
         [Fact]

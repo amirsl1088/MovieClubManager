@@ -1,5 +1,6 @@
 ﻿using MovieClubManager.Contracts.Interfaces;
 using MovieClubManager.Service.Rents.Contracts;
+using MovieClubManager.Service.Rents.Contracts.Dtos;
 using MovieClubManager.Service.Rents.Exceptions;
 
 namespace MovieClubManager.Service.Rents
@@ -23,6 +24,11 @@ namespace MovieClubManager.Service.Rents
             }
             _repository.Delete(rent);
             await _unitofwork.Complete();
+        }
+
+        public async Task<List<GetRentDto>?> GetAll()
+        {
+            return await _repository.Get();
         }
     }
 }

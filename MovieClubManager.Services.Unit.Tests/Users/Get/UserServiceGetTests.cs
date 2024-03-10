@@ -15,23 +15,20 @@ using MovieClubManager.Test.Tools.Users.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Get
 {
-    public class UserServiceGetTests
+    public class UserServiceGetTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+       
         private readonly UserService _sut;
         public UserServiceGetTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = UserServiceFactory.Create(_context);
+           
+            _sut = UserServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Get_gets_users_imformation_properly()
         {
             var user = new UserBuilder().Build();
-            _context.Save(user);
+            DbContext.Save(user);
 
             var actual = await _sut.GetAll();
 

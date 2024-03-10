@@ -8,6 +8,7 @@ using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using MovieClubManager.Test.Tools.Movies.Builders;
 using MovieClubManager.Test.Tools.Rents.Builders;
+using MovieClubManager.Test.Tools.Rents.Fctories;
 using MovieClubManager.Test.Tools.Users.Builders;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace MovieClubManager.Services.Unit.Tests.RentManagers.Delete
         private readonly RentManagerService _sut;
         public RentManagerServiceDeleteTests()
         {
-            _sut = new RentManagerAppService(new EFRentRepository(SetupContext), new EFUnitOfWork(SetupContext));
+            _sut = RentManagerServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Delete_deletes_rent_form_properly()

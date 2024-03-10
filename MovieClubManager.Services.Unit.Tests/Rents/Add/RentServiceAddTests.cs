@@ -37,12 +37,12 @@ namespace MovieClubManager.Services.Unit.Tests.Rents.Add
         public async Task Add_adds_one_new_rent_properly()
         {
             var genre = new GenreBuilder().Build();
-            SetupContext.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            SetupContext.Save(movie);
+            DbContext.Save(movie);
             var user = new UserBuilder().Build();
-            SetupContext.Save(user);
+            DbContext.Save(user);
             var dto = AddRentDtoFactory.Create(user.Id, movie.Id);
 
             await _sut.Add(dto);
@@ -59,10 +59,10 @@ namespace MovieClubManager.Services.Unit.Tests.Rents.Add
         {
             var dummyUserId = 4;
             var genre = new GenreBuilder().Build();
-            SetupContext.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            SetupContext.Save(movie);
+            DbContext.Save(movie);
             var dto = AddRentDtoFactory.Create(dummyUserId, movie.Id);
 
             var actual = () => _sut.Add(dto);
@@ -74,7 +74,7 @@ namespace MovieClubManager.Services.Unit.Tests.Rents.Add
         {
             var dummyMovieId = 5;
             var user = new UserBuilder().Build();
-            SetupContext.Save(user);
+            DbContext.Save(user);
             var dto = AddRentDtoFactory.Create(user.Id, dummyMovieId);
 
             var actual = () => _sut.Add(dto);
@@ -85,19 +85,19 @@ namespace MovieClubManager.Services.Unit.Tests.Rents.Add
         public async Task Add_throws_exception_when_movie_is_already_rented_exception()
         {
             var genre = new GenreBuilder().Build();
-            SetupContext.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            SetupContext.Save(movie);
+            DbContext.Save(movie);
             var user = new UserBuilder().Build();
-            SetupContext.Save(user);
+            DbContext.Save(user);
             var rent = new RentBuilder()
                 .WithUserId(user.Id)
                 .WithMovieId(movie.Id)
                 .WithDailyPriceRent(movie.DailyPriceRent)
                 .WithDelayPenalty(movie.DelayPenalty)
                 .Build();
-            SetupContext.Save(rent);
+            DbContext.Save(rent);
             var dto = AddRentDtoFactory.Create(user.Id, movie.Id);
 
             var actual = () => _sut.Add(dto);

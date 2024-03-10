@@ -13,33 +13,31 @@ using FluentAssertions;
 using MovieClubManager.Service.Movies.Exceptions;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Movies.Builders;
+using MovieClubManager.Test.Tools.Movies.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Movies.Delete
 {
-    public class MovieManagerServiceDeleteTests
+    public class MovieManagerServiceDeleteTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+      
         private readonly MovieManagerService _sut;
         public MovieManagerServiceDeleteTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = new MovieManagerAppService(new EFMovieManagerRepository(_context), new EFUnitOfWork(_context), new EFGenreManagerRepository(_context));
+           
+            _sut =MovieManagerSerciceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Delete_delets_movie_from_table_movies_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            _context.Save(movie);
+            DbContext.Save(movie);
 
             await _sut.Delete(movie.Id);
 
-            var actual = _readContext.Movies.FirstOrDefault(_ => _.Id == movie.Id);
+            var actual = ReadContext.Movies.FirstOrDefault(_ => _.Id == movie.Id);
             actual.Should().BeNull();
         }
         [Fact]

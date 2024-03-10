@@ -13,23 +13,19 @@ using System.Threading.Tasks;
 
 namespace MovieClubManager.Services.Unit.Tests.GenreManagers.Get
 {
-    public class GenreManagerServiceGetTests
+    public class GenreManagerServiceGetTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
         private readonly GenreManagerService _sut;
         public GenreManagerServiceGetTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = GenreManagerServiceFactory.Create(_context);
+           
+            _sut = GenreManagerServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Get_gets_genre_information_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var filter = GetGenreFilterDtoFactory.Create();
 
             var actual = await _sut.GetAll(filter);
@@ -46,7 +42,7 @@ namespace MovieClubManager.Services.Unit.Tests.GenreManagers.Get
         {
             var genre = new GenreBuilder().WithTitle(title)
                 .Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var filterDto = GetGenreFilterDtoFactory.Create(filter);
 
             var actual = await _sut.GetAll(filterDto);

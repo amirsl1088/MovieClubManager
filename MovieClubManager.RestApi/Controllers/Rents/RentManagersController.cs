@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieClubManager.Service.Rents.Contracts;
+using MovieClubManager.Service.Rents.Contracts.Dtos;
 
 namespace MovieClubManager.RestApi.Controllers.Rents
 {
@@ -17,6 +18,11 @@ namespace MovieClubManager.RestApi.Controllers.Rents
         public async Task Delete([FromRoute]int id)
         {
             await _service.Delete(id);
+        }
+        [HttpGet]
+        public async Task<List<GetRentDto>?> GetAll()
+        {
+          return  await _service.GetAll();
         }
     }
 }

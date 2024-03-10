@@ -19,28 +19,25 @@ using MovieClubManager.Contracts.Interfaces;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Update
 {
-    public class UserServiceUpdateTests
+    public class UserServiceUpdateTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+       
         private readonly UserService _sut;
         public UserServiceUpdateTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = UserServiceFactory.Create(_context);
+          
+            _sut = UserServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Update_updates_users_imformation_properly()
         {
             var user = new UserBuilder().Build();
-            _context.Save(user);
+            DbContext.Save(user);
             var dto = UpdateUserDtoFactory.Create();
 
             await _sut.Update(user.Id, dto);
 
-            var actual = _readContext.Users.Single();
+            var actual = ReadContext.Users.Single();
             actual.FirstName.Should().Be(dto.FirstName);
             actual.LastName.Should().Be(dto.LastName);
             actual.Adress.Should().Be(dto.Adress);
@@ -63,16 +60,16 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Update
         public async Task Update_updates_user_properly_with_mock()
         {
             var user = new UserBuilder().Build();
-            _context.Save(user);
+            DbContext.Save(user);
             var dto = UpdateUserDtoFactory.Create();
             var repository = new Mock<UserRepository>();
             var unitOfWork = new Mock<UnitOfWork>();
-            var sut = UserServiceFactory.Create(_context,userRepository: repository.Object,unitOfWork: unitOfWork.Object);
+            var sut = UserServiceFactory.Create(SetupContext,userRepository: repository.Object,unitOfWork: unitOfWork.Object);
             repository.Setup(_ => _.FindUserById(It.Is<int>(_ => _ == user.Id))).ReturnsAsync(user);
 
-            await _sut.Update(user.Id, dto);
+            await sut.Update(user.Id, dto);
 
-            //repository.Verify(_=>_.Update(), )
+            
             unitOfWork.Verify(_ => _.Complete(), Times.Once);
         }
     }

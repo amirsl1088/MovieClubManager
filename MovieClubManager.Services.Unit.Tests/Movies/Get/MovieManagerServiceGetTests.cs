@@ -16,26 +16,23 @@ using MovieClubManager.Test.Tools.Movies.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Movies.Get
 {
-    public class MovieManagerServiceGetTests
+    public class MovieManagerServiceGetTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+      
         private readonly MovieManagerService _sut;
         public MovieManagerServiceGetTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = new MovieManagerAppService(new EFMovieManagerRepository(_context), new EFUnitOfWork(_context), new EFGenreManagerRepository(_context));
+          
+            _sut = MovieManagerSerciceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Get_gets_all_movies_information_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            _context.Save(movie);
+            DbContext.Save(movie);
             var filterDto = GetMovieFilterDtoFactory.Create();
 
             var actual = await _sut.GetAll(filterDto);
@@ -57,10 +54,10 @@ namespace MovieClubManager.Services.Unit.Tests.Movies.Get
         public async Task Get_gets_movies_with_filter_properly(string name,string filter)
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .WithName(name).Build();
-            _context.Save(movie);
+            DbContext.Save(movie);
             var filterDto = GetMovieFilterDtoFactory.Create(filter);
 
             var actual = await _sut.GetAll(filterDto);

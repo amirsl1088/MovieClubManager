@@ -18,33 +18,30 @@ using MovieClubManager.Test.Tools.Movies.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Movies.Update
 {
-    public class MovieManagerServiceUpdateTests
+    public class MovieManagerServiceUpdateTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+       
         private readonly MovieManagerService _sut;
         public MovieManagerServiceUpdateTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = new MovieManagerAppService(new EFMovieManagerRepository(_context), new EFUnitOfWork(_context), new EFGenreManagerRepository(_context));
+           
+            _sut = MovieManagerSerciceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Update_updates_movie_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var genre2 = new GenreBuilder().Build();
-            _context.Save(genre2);
+            DbContext.Save(genre2);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            _context.Save(movie);
+            DbContext.Save(movie);
             var dto = UpdateMovieDtoFactory.Create(genre2.Id);
 
             await _sut.Update(movie.Id, dto);
 
-            var actual = _readContext.Movies.Single();
+            var actual = ReadContext.Movies.Single();
             actual.Name.Should().Be(dto.Name);
             actual.PublishYear.Should().Be(dto.PublishYear);
             actual.DailyPriceRent.Should().Be(dto.DailyPriceRent);
@@ -72,10 +69,10 @@ namespace MovieClubManager.Services.Unit.Tests.Movies.Update
         {
             var dummyid = 5;
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            _context.Save(movie);
+            DbContext.Save(movie);
             var dto = UpdateMovieDtoFactory.Create(dummyid);
 
             var actual = async () => await _sut.Update(movie.Id, dto);

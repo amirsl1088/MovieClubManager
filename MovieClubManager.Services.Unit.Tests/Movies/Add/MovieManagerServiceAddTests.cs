@@ -16,28 +16,25 @@ using MovieClubManager.Test.Tools.Movies.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Movies.Add
 {
-    public class MovieManagerServiceAddTests
+    public class MovieManagerServiceAddTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+       
         private readonly MovieManagerService _sut;
         public MovieManagerServiceAddTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = new MovieManagerAppService(new EFMovieManagerRepository(_context), new EFUnitOfWork(_context), new EFGenreManagerRepository(_context));
+           
+            _sut = MovieManagerSerciceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Add_adds_one_new_movie_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var dto = AddMovieDtoFactory.Create(genre.Id);
 
             await _sut.Add(dto);
 
-            var actual = _readContext.Movies.Single();
+            var actual = ReadContext.Movies.Single();
             actual.Name.Should().Be(dto.Name);
             actual.PublishYear.Should().Be(dto.PublishYear);
             actual.DailyPriceRent.Should().Be(dto.DailyPriceRent);

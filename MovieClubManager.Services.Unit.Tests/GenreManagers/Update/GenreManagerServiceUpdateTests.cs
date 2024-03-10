@@ -13,28 +13,25 @@ using System.Threading.Tasks;
 
 namespace MovieClubManager.Services.Unit.Tests.GenreManagers.Update
 {
-    public class GenreManagerServiceUpdateTests
+    public class GenreManagerServiceUpdateTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+
         private readonly GenreManagerService _sut;
         public GenreManagerServiceUpdateTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = GenreManagerServiceFactory.Create(_context);
+           
+            _sut = GenreManagerServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Update_updates_title_of_genre_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var dto = UpdateGenreDtoFactory.Create();
 
             await _sut.Update(genre.Id, dto);
 
-            var actual = _readContext.Genres.Single();
+            var actual = ReadContext.Genres.Single();
             actual.Title.Should().Be(dto.Title);
         }
         [Fact]

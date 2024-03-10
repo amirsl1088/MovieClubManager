@@ -16,27 +16,24 @@ using MovieClubManager.Test.Tools.Users.Factories;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Delete
 {
-    public class UserServiceDeleteTests
+    public class UserServiceDeleteTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+       
         private readonly UserService _sut;
         public UserServiceDeleteTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = UserServiceFactory.Create(_context);
+           
+            _sut = UserServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Delete_delets_user_properly()
         {
             var user = new UserBuilder().Build();
-            _context.Save(user);
+            DbContext.Save(user);
 
             await _sut.Delete(user.Id);
 
-            var actual = _readContext.Users.FirstOrDefault(_ => _.Id == user.Id);
+            var actual = ReadContext.Users.FirstOrDefault(_ => _.Id == user.Id);
             actual.Should().BeNull();
         }
         [Fact]

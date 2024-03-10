@@ -14,27 +14,24 @@ using System.Threading.Tasks;
 
 namespace MovieClubManager.Services.Unit.Tests.GenreManagers.Delete
 {
-    public class GenreManagerServiceDeleteTests
+    public class GenreManagerServiceDeleteTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
+      
         private readonly GenreManagerService _sut;
         public GenreManagerServiceDeleteTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
-            _sut = GenreManagerServiceFactory.Create(_context);
+            
+            _sut = GenreManagerServiceFactory.Create(SetupContext);
         }
         [Fact]
         public async Task Delete_delets_genre_from_table_genres_properly()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
 
             await _sut.Delete(genre.Id);
 
-            var actual = _readContext.Genres.FirstOrDefault(_ => _.Id == genre.Id);
+            var actual = ReadContext.Genres.FirstOrDefault(_ => _.Id == genre.Id);
             actual.Should().BeNull();
         }
         [Fact]
@@ -50,10 +47,10 @@ namespace MovieClubManager.Services.Unit.Tests.GenreManagers.Delete
         public async Task Delete_throws_exception_when_genre_movies_not_empty_exception()
         {
             var genre = new GenreBuilder().Build();
-            _context.Save(genre);
+            DbContext.Save(genre);
             var movie = new MovieBuilder().WithGenreId(genre.Id)
                 .Build();
-            _context.Save(movie);
+            DbContext.Save(movie);
 
             var actual = () => _sut.Delete(genre.Id);
 

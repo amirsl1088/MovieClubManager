@@ -17,19 +17,15 @@ using System.Threading.Tasks;
 
 namespace MovieClubManager.Services.Unit.Tests.Users.Add
 {
-    public class UserServiceAddTests
+    public class UserServiceAddTests:BusinessUnitTest
     {
-        private readonly EFDataContext _context;
-        private readonly EFDataContext _readContext;
         private readonly UserService _sut;
         private readonly DateTime _faketime;
         public UserServiceAddTests()
         {
-            var db = new EFInMemoryDatabase();
-            _context = db.CreateDataContext<EFDataContext>();
-            _readContext = db.CreateDataContext<EFDataContext>();
+           
             _faketime = new DateTime(2024, 03, 07);
-            _sut = UserServiceFactory.Create(_context, _faketime);
+            _sut = UserServiceFactory.Create(SetupContext, _faketime);
         }
         [Fact]
         public async Task Add_adds_user_properly()
@@ -38,7 +34,7 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Add
 
             await _sut.Add(dto);
 
-            var actual = _readContext.Users.Single();
+            var actual = ReadContext.Users.Single();
             actual.FirstName.Should().Be(dto.FirstName);
             actual.LastName.Should().Be(dto.LastName);
             actual.Age.Should().Be(dto.Age);
@@ -62,13 +58,12 @@ namespace MovieClubManager.Services.Unit.Tests.Users.Add
             repositoryMock.Verify(_ => _.Add(It.Is<User>(_ =>
             _.FirstName == dto.FirstName &&
             _.LastName == dto.LastName &&
-            _.Age == dto.Age)), Times.Once);
-            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.LastName == dto.LastName)));
-            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Age == dto.Age)));
-            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Adress == dto.Adress)));
-            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.MobileNumber == dto.MobileNumber)));
-            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.Gender == dto.Gender)));
-            //repositoryMock.Verify(_ => _.Add(It.Is<User>(_ => _.CreatedAt == _faketime)));
+            _.Age == dto.Age &&
+            _.Adress==dto.Adress &&
+            _.MobileNumber==dto.MobileNumber &&
+            _.Gender==dto.Gender &&
+            _.CreatedAt==_faketime)), Times.Once);
+           
             unitOfWorkMock.Verify(_ => _.Complete(), Times.Once);
 
         }
