@@ -4,11 +4,14 @@ using MovieClubManager.Infrastructure;
 using MovieClubManager.Persistence.EF;
 using MovieClubManager.Persistence.EF.Genres;
 using MovieClubManager.Persistence.EF.Movies;
+using MovieClubManager.Persistence.EF.Rents;
 using MovieClubManager.Persistence.EF.Users;
 using MovieClubManager.Service.Genres;
 using MovieClubManager.Service.Genres.Contracts;
 using MovieClubManager.Service.Movies;
 using MovieClubManager.Service.Movies.Contracts;
+using MovieClubManager.Service.Rents;
+using MovieClubManager.Service.Rents.Contracts;
 using MovieClubManager.Service.Users;
 using MovieClubManager.Service.Users.Contrcts;
 
@@ -34,6 +37,8 @@ builder.Services.AddScoped<MovieManagerRepository, EFMovieManagerRepository>();
 builder.Services.AddScoped<UserService, UserAppService>();
 builder.Services.AddScoped<UserRepository, EFUserRepository>();
 builder.Services.AddScoped<DateTimeService, DateTimeAppService>();
+builder.Services.AddScoped<RentService, RentAppService>();
+builder.Services.AddScoped<RentRepository, EFRentRepository>();
 
 
 var app = builder.Build();

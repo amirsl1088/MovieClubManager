@@ -1,4 +1,5 @@
 ﻿using MovieClubManager.Entities.Genres;
+using MovieClubManager.Entities.Rents;
 using MovieClubManager.Entities.Users;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,18 @@ namespace MovieClubManager.Entities.Movies
         public int Id { get; set; }
         public string Name { get; set; }
         public string PublishYear { get; set; }
-        public int DailyPriceRent { get; set; }
+        public decimal DailyPriceRent { get; set; }
         public int AgeLimit { get; set; }
-        public int DelayPenalty { get; set; }
-        public double Duration { get; set; }
+        public decimal DelayPenalty { get; set; }
+        public decimal Duration { get; set; }
         public string Director { get; set; }
         public string? Description { get; set; }
         public Genre? Genre { get; set; }
         public int GenreId { get; set; }
-        public int? Count { get; set; } = 1;
+        public int Count { get; set; } 
         public decimal? Rate { get; set; }
-       
+        public HashSet<Rent> Rents { get; set; }
+
 
     }
 }

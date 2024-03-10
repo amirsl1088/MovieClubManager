@@ -29,16 +29,25 @@ namespace MovieClubManager.Service.Movies
             {
                 throw new GenreIdNotFoundException();
             }
+            if (dto.DailyPriceRent < 0)
+            {
+                throw new DailyPriceRentCannotBeLessThanZiro();
+            }
+            if (dto.DelayPenalty < 0)
+            {
+                throw new DelayPenaltyCannotBeLessThanZiro();
+            }
             var movie = new Movie
             {
                 Name = dto.Name,
                 PublishYear = dto.PublishYear,
-                DailyPriceRent =dto.DailyPriceRent,
-                DelayPenalty =dto.DelayPenalty,
+                DailyPriceRent = dto.DailyPriceRent,
+                DelayPenalty = dto.DelayPenalty,
                 AgeLimit = dto.AgeLimit,
                 Director = dto.Director,
                 Duration = dto.Duration,
-                GenreId = genre.Id
+                GenreId = genre.Id,
+                Count = 1
             };
            
             _repository.Add(movie);

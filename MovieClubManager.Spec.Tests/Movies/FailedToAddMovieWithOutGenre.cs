@@ -21,12 +21,12 @@ namespace MovieClubManager.Spec.Tests.Movies
 AsA = "مدیر کلاب ",
 IWantTo = " فیلمی به فهرست فیلم ها اضافه کنم",
 InOrderTo = "فیلم ها را اجاره دهم")]
-    public class AddMovieExceptionTest:BusinessIntegrationTest
+    public class FailedToAddMovieWithOutGenre:BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Func<Task>? _actual;
         
-        public AddMovieExceptionTest()
+        public FailedToAddMovieWithOutGenre()
         {
             _sut = MovieManagerSerciceFactory.Create(SetupContext);
         }

@@ -21,13 +21,13 @@ namespace MovieClubManager.Spec.Tests.Movies
 AsA = "مدیر کلاب ",
 IWantTo = "فیلمی را ویرایش کنم  ",
 InOrderTo = "اطلاعات ان را را ویرایش کنم")]
-    public class UpdateMovieExceptionTest:BusinessIntegrationTest
+    public class FailedToUpdateMovieToNotExistGenre:BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Movie _movie;
         private Genre _genre;
         private Func<Task>? _actual;
-        public UpdateMovieExceptionTest()
+        public FailedToUpdateMovieToNotExistGenre()
         {
             _sut = MovieManagerSerciceFactory.Create(SetupContext);
         }

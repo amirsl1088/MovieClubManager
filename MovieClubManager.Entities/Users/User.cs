@@ -1,4 +1,5 @@
 ﻿using MovieClubManager.Entities.Movies;
+using MovieClubManager.Entities.Rents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace MovieClubManager.Entities.Users
         public Gender Gender { get; set; }
         public int? Rate { get; set; }
         public DateTime CreatedAt { get; set; }
+        public HashSet<Rent> Rents { get; set; }
     }
 }

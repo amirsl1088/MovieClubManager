@@ -21,7 +21,7 @@ namespace MovieClubManager.Test.Tools.Movies.Builders
                 DailyPriceRent = 132,
                 AgeLimit = 18,
                 DelayPenalty = 20,
-                Duration = 1.54,
+                Duration = 120,
                 Director = "sgsg",
                 GenreId =  1
 
@@ -44,12 +44,12 @@ namespace MovieClubManager.Test.Tools.Movies.Builders
             _dto.PublishYear = pulishyear;
             return this;
         }
-        public AddMovieDtoBuilder WithDailyPercentRent(int price)
+        public AddMovieDtoBuilder WithDailyPercentRent(decimal price)
         {
             _dto.DailyPriceRent = price;
             return this;
         }
-        public AddMovieDtoBuilder WithDelayPenalty(int delaypenalty)
+        public AddMovieDtoBuilder WithDelayPenalty(decimal delaypenalty)
         {
             _dto.DelayPenalty = delaypenalty;
             return this;
@@ -59,7 +59,7 @@ namespace MovieClubManager.Test.Tools.Movies.Builders
             _dto.Director = director;
             return this;
         }
-        public AddMovieDtoBuilder WithDuration(double duration)
+        public AddMovieDtoBuilder WithDuration(decimal duration)
         {
             _dto.Duration = duration;
             return this;

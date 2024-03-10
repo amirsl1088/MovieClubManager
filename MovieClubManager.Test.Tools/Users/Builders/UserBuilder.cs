@@ -19,7 +19,8 @@ namespace MovieClubManager.Test.Tools.Users.Builders
                 Age = 22,
                 Adress = "jyghjlk",
                 MobileNumber = "rfssyt",
-                Gender = Gender.female
+                Gender = Gender.female,
+                CreatedAt=DateTime.UtcNow
             };
         }
         public UserBuilder WithFirstName(string firstname)

@@ -15,7 +15,7 @@ namespace MovieClubManager.RestApi.Controllers.Movies
             _service = service;
         }
         [HttpPost]
-        public async Task Add(AddMovieDto dto)
+        public async Task Add([FromBody]AddMovieDto dto)
         {
             await _service.Add(dto);
         }
@@ -25,7 +25,7 @@ namespace MovieClubManager.RestApi.Controllers.Movies
            return await _service.GetAll(filterDto);
         }
         [HttpPatch("{id}")]
-        public async Task Update([FromRoute]int id,UpdateMovieDto dto)
+        public async Task Update([FromRoute]int id,[FromBody]UpdateMovieDto dto)
         {
             await _service.Update(id, dto);
         }

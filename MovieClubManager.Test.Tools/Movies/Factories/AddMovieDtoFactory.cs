@@ -19,7 +19,7 @@ namespace MovieClubManager.Test.Tools.Movies.Factories
                 DailyPriceRent = 132,
                 AgeLimit = 18,
                 DelayPenalty = 20,
-                Duration = 1.54,
+                Duration = 120,
                 Director = "sgsg",
                 GenreId = genreid ??1
 

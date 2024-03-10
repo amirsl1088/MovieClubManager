@@ -20,7 +20,7 @@ namespace MovieClubManager.Test.Tools.Movies.Factories
                 DelayPenalty = 109,
                 AgeLimit = 17,
                 Director = "affdgdef",
-                Duration = 2.30,
+                Duration = 150,
                 GenreId = genreid ??1
             };
         }

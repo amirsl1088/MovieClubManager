@@ -21,7 +21,7 @@ namespace MovieClubManager.Test.Tools.Movies.Builders
                 DelayPenalty = 10,
                 AgeLimit = 18,
                 Director = "afef",
-                Duration = 2.50,
+                Duration = 150,
                 GenreId = 1
             };
         }
@@ -40,12 +40,12 @@ namespace MovieClubManager.Test.Tools.Movies.Builders
             _movie.PublishYear = pulishyear;
             return this;
         }
-        public MovieBuilder WithDailyPercentRent(int price)
+        public MovieBuilder WithDailyPercentRent(decimal price)
         {
             _movie.DailyPriceRent = price;
             return this;
         }
-        public MovieBuilder WithDelayPenalty(int delaypenalty)
+        public MovieBuilder WithDelayPenalty(decimal delaypenalty)
         {
             _movie.DelayPenalty = delaypenalty;
             return this;
@@ -55,7 +55,7 @@ namespace MovieClubManager.Test.Tools.Movies.Builders
             _movie.Director = director;
             return this;
         }
-        public MovieBuilder WithDuration(double duration)
+        public MovieBuilder WithDuration(decimal duration)
         {
             _movie.Duration = duration;
             return this;

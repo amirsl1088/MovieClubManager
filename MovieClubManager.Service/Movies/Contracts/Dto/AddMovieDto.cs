@@ -10,17 +10,18 @@ namespace MovieClubManager.Service.Movies.Contracts.Dto
         [Required]
         public string PublishYear { get; set; }
         [Required]
-        public int DailyPriceRent { get; set; }
+        public decimal DailyPriceRent { get; set; }
         [Required]
         public int AgeLimit { get; set; }
         [Required]
-        public int DelayPenalty { get; set; }
+        public decimal DelayPenalty { get; set; }
         [Required]
-        public double Duration { get; set; }
+        public decimal Duration { get; set; }
         [Required]
         public string Director { get; set; }
         [ForeignKey("GenreId")]
         public int GenreId { get; set; }
         public string? Description { get; set; }
+       
     }
 }
