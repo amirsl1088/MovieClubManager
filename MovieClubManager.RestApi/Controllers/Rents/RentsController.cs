@@ -20,9 +20,14 @@ namespace MovieClubManager.RestApi.Controllers.Rents
             await _service.Add(dto);
         }
         [HttpPatch("{id}")]
-        public async Task<decimal?> Update([FromQuery]int id,[FromBody]UpdateRentDto dto)
+        public async Task<decimal?> Update([FromRoute]int id,[FromBody]UpdateRentDto dto)
         {
             return await _service.Update(id, dto);
+        }
+        [HttpGet("{userid}")]
+        public async Task<List<GetRentDto>?>Get([FromRoute]int userid)
+        {
+            return await _service.Get(userid);
         }
     }
 }

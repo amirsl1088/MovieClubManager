@@ -58,6 +58,15 @@ namespace MovieClubManager.Service.Rents
             await _unitOfWork.Complete();
         }
 
+        public async Task<List<GetRentDto>?> Get(int userid)
+        {
+            var user =await _userRepository.FindUserById(userid);
+            var rents =await _repository.Get();
+            rents = rents.Where(_ => _.UserId == userid).ToList();
+            return rents;
+            
+        }
+
         public async Task<decimal?> Update(int id, UpdateRentDto dto)
         {
             var rent = await _repository.FindRentById(id);

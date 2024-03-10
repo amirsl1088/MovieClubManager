@@ -6,5 +6,6 @@ namespace MovieClubManager.Service.Rents.Contracts
     {
         Task Add(AddRentDto dto);
         Task<decimal?> Update(int id, UpdateRentDto dto);
+        Task<List<GetRentDto>?> Get(int userid);
     }
 }
