@@ -16,26 +16,26 @@ namespace MovieClubManager.Service.Rents
         private MovieManagerRepository _movieRepository;
         private DateTimeService _dateTimeService;
         public RentAppService(RentRepository repository,
-            UnitOfWork unitOfWork,UserRepository userRepository
-            ,MovieManagerRepository movieManagerRepository
-            ,DateTimeService dateTimeService)
+            UnitOfWork unitOfWork, UserRepository userRepository
+            , MovieManagerRepository movieManagerRepository
+            , DateTimeService dateTimeService)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
             _userRepository = userRepository;
-            _movieRepository=movieManagerRepository;
+            _movieRepository = movieManagerRepository;
             _dateTimeService = dateTimeService;
         }
 
         public async Task Add(AddRentDto dto)
         {
-            
-            var user =await _userRepository.FindUserById(dto.UserId);
+
+            var user = await _userRepository.FindUserById(dto.UserId);
             if (user == null)
             {
                 throw new UserNotFoundException();
             }
-            var movie =await _movieRepository.FindMovieById(dto.MovieId);
+            var movie = await _movieRepository.FindMovieById(dto.MovieId);
             if (movie == null)
             {
                 throw new MovieNotFoundException();
@@ -51,10 +51,35 @@ namespace MovieClubManager.Service.Rents
                 MovieId = dto.MovieId,
                 DailyPriceRent = movie.DailyPriceRent,
                 DelayPenalty = movie.DelayPenalty,
-                RentedAt = _dateTimeService.Now()
+                RentedAt = _dateTimeService.Now(),
+                Movie = movie
             };
             _repository.Add(rent);
             await _unitOfWork.Complete();
+        }
+
+        public async Task<decimal?> Update(int id, UpdateRentDto dto)
+        {
+            var rent = await _repository.FindRentById(id);
+            if (rent == null)
+            {
+                throw new RentIdNotFoundException();
+            }
+            if (dto.GiveBack < DateTime.Today)
+            {
+                throw new DateTimeCannotBeforThanTodayException();
+            }
+
+            rent.MovieRate = dto.MovieRate;
+
+            rent.GiveBack = dto.GiveBack;
+            var rentedDay = rent.RentedAt.Day;
+            var giveBackDay = dto.GiveBack.Day;
+            var rentDay = giveBackDay-rentedDay;
+            var cost = rent.DailyPriceRent * rentDay;
+            rent.Cost = cost;
+            await _unitOfWork.Complete();
+            return rent.Cost;
         }
     }
 }

@@ -19,6 +19,7 @@ namespace MovieClubManager.Entities.Rents
         public DateTime? GiveBack { get; set; }
         public decimal DailyPriceRent { get; set; }
         public decimal DelayPenalty { get; set; }
+        public decimal? MovieRate { get; set; }
         public decimal? Cost { get; set; }
 
 

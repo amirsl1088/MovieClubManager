@@ -21,6 +21,7 @@ namespace MovieClubManager.Migrations.Rents
                  .WithColumn("GiveBack").AsDateTime().Nullable()
                  .WithColumn("DailyPriceRent").AsDecimal().NotNullable()
                  .WithColumn("DelayPenalty").AsDecimal().NotNullable()
+                 .WithColumn("MovieRate").AsDecimal().Nullable()
                  .WithColumn("Cost").AsDecimal().Nullable();
         }
         public override void Down()

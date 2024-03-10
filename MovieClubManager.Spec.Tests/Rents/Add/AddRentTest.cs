@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MovieClubManager.Contracts.Interfaces;
 using MovieClubManager.Entities.Genres;
 using MovieClubManager.Entities.Movies;
 using MovieClubManager.Entities.Users;
@@ -13,6 +14,7 @@ using MovieClubManager.Service.Rents.Contracts.Dtos;
 using MovieClubManager.Test.Tools.Genres.Builders;
 using MovieClubManager.Test.Tools.Genres.Factories;
 using MovieClubManager.Test.Tools.Movies.Builders;
+using MovieClubManager.Test.Tools.Rents.Fctories;
 using MovieClubManager.Test.Tools.Users.Builders;
 using MovieManagerClub.Tests.Tools.Infrastructure.DatabaseConfig.IntegrationTest;
 using System;
@@ -22,23 +24,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Rents
+namespace MovieClubManager.Spec.Tests.Rents.Add
 {
     [Scenario("اجاره کردن فیلم")]
     [Story("",
 AsA = "کاربر ",
 IWantTo = " یک فیلم اجاره کنم",
 InOrderTo = "فیلم را ببینم")]
-    public class AddRentTest:BusinessIntegrationTest
+    public class AddRentTest : BusinessIntegrationTest
     {
         private readonly RentService _sut;
         private Genre _genre;
         private Movie _movie;
         private User _user;
+        
         public AddRentTest()
         {
-            _sut = new RentAppService(new EFRentRepository(SetupContext), new EFUnitOfWork(SetupContext)
-                ,new EFUserRepository(SetupContext),new EFMovieManagerRepository(SetupContext));
+
+            _sut = RentServiceFactory.Create(SetupContext);
         }
         [Given("یک فیلم با نام اینسپشن " +
             "و با قیمت روزانه دویست هزارتومان" +
@@ -47,7 +50,7 @@ InOrderTo = "فیلم را ببینم")]
         [And("یک کاربر با نام امیر وجود دارد")]
         private void Given()
         {
-             _genre = new GenreBuilder().WithTitle("اکشن ").Build();
+            _genre = new GenreBuilder().WithTitle("اکشن ").Build();
             Save(_genre);
             _movie = new MovieBuilder().WithName("اینسپشن")
                .WithDailyPercentRent(200)
@@ -57,8 +60,8 @@ InOrderTo = "فیلم را ببینم")]
             Save(_movie);
             _user = new UserBuilder().WithFirstName("امیر").Build();
             Save(_user);
-            
-           
+
+
         }
 
         [When("من درخواست اجاره کردن فیلم با نام اینسپشن و با کاربر امیر را دارم")]

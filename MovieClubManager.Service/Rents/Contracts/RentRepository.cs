@@ -6,5 +6,6 @@ namespace MovieClubManager.Service.Rents.Contracts
     {
         void Add(Rent rent);
         bool IsExistMovieForRent(int movieid);
+        Task<Rent?> FindRentById(int id);
     }
 }

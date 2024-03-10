@@ -12,6 +12,10 @@ namespace MovieClubManager.Entities.Movies
 {
     public class Movie
     {
+        public Movie()
+        {
+            Rents = new HashSet<Rent>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string PublishYear { get; set; }

@@ -22,7 +22,13 @@ namespace MovieClubManager.Persistence.EF.Rents
         {
             _rent.Add(rent);
         }
-      public bool IsExistMovieForRent(int movieid)
+
+        public async Task<Rent?> FindRentById(int id)
+        {
+            return await _rent.FirstOrDefaultAsync(_ => _.Id == id);
+        }
+
+        public bool IsExistMovieForRent(int movieid)
         {
             return _rent.Any(_ => _.MovieId == movieid && _.GiveBack == null);
 
