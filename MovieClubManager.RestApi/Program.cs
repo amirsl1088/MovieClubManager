@@ -39,6 +39,7 @@ builder.Services.AddScoped<UserRepository, EFUserRepository>();
 builder.Services.AddScoped<DateTimeService, DateTimeAppService>();
 builder.Services.AddScoped<RentService, RentAppService>();
 builder.Services.AddScoped<RentRepository, EFRentRepository>();
+builder.Services.AddScoped<RentManagerService, RentManagerAppService>();
 
 
 var app = builder.Build();

@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Movies
+namespace MovieClubManager.Spec.Tests.Movies.Delete
 {
 
     [Scenario("حذف کردن فیلم")]
@@ -21,7 +21,7 @@ namespace MovieClubManager.Spec.Tests.Movies
 AsA = "مدیر کلاب ",
 IWantTo = "فیلمی را حذف کنم ",
 InOrderTo = "ان فیلم مذکور را از فهرست فیلم ها حذف کنم")]
-    public class DeleteMovieTest:BusinessIntegrationTest
+    public class DeleteMovieTest : BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Movie _movie;

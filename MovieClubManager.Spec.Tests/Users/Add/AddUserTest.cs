@@ -16,18 +16,18 @@ using System.Threading.Tasks;
 
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Users
+namespace MovieClubManager.Spec.Tests.Users.Add
 {
     [Scenario("اضافه کردن کاربر")]
     [Story("",
 AsA = "کاربر ",
 IWantTo = "یک کاربر اضافه کنم  ",
 InOrderTo = "فیلم ها را اجاره کنم")]
-    public class AddUserTest:BusinessIntegrationTest
+    public class AddUserTest : BusinessIntegrationTest
     {
         private readonly UserService _sut;
         private DateTime _faketime;
-        
+
         public AddUserTest()
         {
             _faketime = new DateTime(2024, 03, 07);
@@ -46,7 +46,7 @@ InOrderTo = "فیلم ها را اجاره کنم")]
             " آدرس فلان و جنسیت مرد را دارم")]
         private async Task When()
         {
-           
+
             var dto = new AddUserDto
             {
                 FirstName = "امیر",

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Users
+namespace MovieClubManager.Spec.Tests.Users.Update
 {
 
     [Scenario("اویرایش کردن کاربر")]
@@ -19,7 +19,7 @@ namespace MovieClubManager.Spec.Tests.Users
 AsA = "کاربر ",
 IWantTo = "یک کاربر ویرایش کنم  ",
 InOrderTo = "اطلاعات آن را ویرایش کنم")]
-    public class UpdateUserTest:BusinessIntegrationTest
+    public class UpdateUserTest : BusinessIntegrationTest
     {
         private readonly UserService _sut;
         private User _user;
@@ -59,9 +59,9 @@ InOrderTo = "اطلاعات آن را ویرایش کنم")]
                 Adress = "بهمان ",
                 MobileNumber = "09161502157",
                 Gender = Gender.male,
-                
+
             };
-            await _sut.Update(_user.Id,dto);
+            await _sut.Update(_user.Id, dto);
 
         }
 
@@ -78,7 +78,7 @@ InOrderTo = "اطلاعات آن را ویرایش کنم")]
             actual.Adress.Should().Be("بهمان ");
             actual.MobileNumber.Should().Be("09161502157");
             actual.Gender.Should().Be(Gender.male);
-            
+
         }
 
 

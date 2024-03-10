@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Genres
+namespace MovieClubManager.Spec.Tests.Genres.Delete
 {
     [Scenario("حذف کردن ژانر")]
     [Story("",
@@ -44,7 +44,7 @@ InOrderTo = "آن را از فهرست ژانرها حذف کنم")]
         [Then("ژانری با نام کمدی نباید در لیست ژانرها وجود داشته باشد")]
         private void Then()
         {
-            var actual = ReadContext.Genres.FirstOrDefault(_=>_.Id==_genre.Id);
+            var actual = ReadContext.Genres.FirstOrDefault(_ => _.Id == _genre.Id);
             actual.Should().BeNull();
         }
 

@@ -9,5 +9,6 @@ namespace MovieClubManager.Service.Rents.Contracts
         bool IsExistMovieForRent(int movieid);
         Task<Rent?> FindRentById(int id);
         Task<List<GetRentDto>> Get();
+        void Delete(Rent rent);
     }
 }

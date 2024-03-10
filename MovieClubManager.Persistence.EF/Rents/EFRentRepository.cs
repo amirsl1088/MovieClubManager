@@ -24,6 +24,11 @@ namespace MovieClubManager.Persistence.EF.Rents
             _rent.Add(rent);
         }
 
+        public void Delete(Rent rent)
+        {
+            _rent.Remove(rent);
+        }
+
         public async Task<Rent?> FindRentById(int id)
         {
             return await _rent.FirstOrDefaultAsync(_ => _.Id == id);

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Xunit;
 
 
-namespace MovieClubManager.Spec.Tests.Genres
+namespace MovieClubManager.Spec.Tests.Genres.Add
 
 
 {
@@ -32,7 +32,7 @@ InOrderTo = "به فیلم ها ژانر دهم.")]
         [And("")]
         private void Given()
         {
-           
+
         }
 
         [When("من میخواهم ژانری به اسم کمدی به فهرست ژانرها اضافه کنم.")]

@@ -13,14 +13,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Movies
+namespace MovieClubManager.Spec.Tests.Movies.Update
 {
     [Scenario("ویرایش کردن فیلم")]
     [Story("",
 AsA = "مدیر کلاب ",
 IWantTo = "فیلمی را ویرایش کنم  ",
 InOrderTo = "اطلاعات ان را را ویرایش کنم")]
-    public class UpdateMovieTest:BusinessIntegrationTest
+    public class UpdateMovieTest : BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Movie _movie;
@@ -69,7 +69,7 @@ InOrderTo = "اطلاعات ان را را ویرایش کنم")]
             dto.DelayPenalty = 15;
             dto.Duration = 120;
             dto.Director = "نولان";
-           
+
             await _sut.Update(_movie.Id, dto);
         }
 

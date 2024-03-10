@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Movies
+namespace MovieClubManager.Spec.Tests.Movies.Add
 {
 
     [Scenario("اضافه کردن فیلم")]
@@ -21,7 +21,7 @@ namespace MovieClubManager.Spec.Tests.Movies
 AsA = "مدیر کلاب ",
 IWantTo = " فیلمی به فهرست فیلم ها اضافه کنم",
 InOrderTo = "فیلم ها را اجاره دهم")]
-    public class AddMovieTest:BusinessIntegrationTest
+    public class AddMovieTest : BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Genre _genre;

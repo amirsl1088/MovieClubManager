@@ -12,18 +12,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Genres
+namespace MovieClubManager.Spec.Tests.Genres.Update
 {
     [Scenario("ویرایش کردن ژانر")]
     [Story("",
 AsA = "مدیر کلاب ",
 IWantTo = "ژانری را ویرایش کنم ",
 InOrderTo = "اطلاعات آن را بروز کنم")]
-    public class UpdateGenreTest:BusinessIntegrationTest
+    public class UpdateGenreTest : BusinessIntegrationTest
     {
 
         private readonly GenreManagerService _sut;
-        private  Genre _genre;
+        private Genre _genre;
 
         public UpdateGenreTest()
         {

@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Movies
+namespace MovieClubManager.Spec.Tests.Movies.Add
 {
 
     [Scenario("عدم اضافه شدن فیلم بدون ژانر")]
@@ -21,11 +21,11 @@ namespace MovieClubManager.Spec.Tests.Movies
 AsA = "مدیر کلاب ",
 IWantTo = " فیلمی به فهرست فیلم ها اضافه کنم",
 InOrderTo = "فیلم ها را اجاره دهم")]
-    public class FailedToAddMovieWithOutGenre:BusinessIntegrationTest
+    public class FailedToAddMovieWithOutGenre : BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Func<Task>? _actual;
-        
+
         public FailedToAddMovieWithOutGenre()
         {
             _sut = MovieManagerSerciceFactory.Create(SetupContext);
@@ -55,14 +55,14 @@ InOrderTo = "فیلم ها را اجاره دهم")]
                 .WithDirector("نولان")
                 .WithGenreId(dummyid)
                 .Build();
-            _actual=()=> _sut.Add(dto);
+            _actual = () => _sut.Add(dto);
 
         }
 
         [Then("خطای عدم امکان ثبت فیلم بدون ژانر باید نشان داده شود")]
         private async Task Then()
         {
-           await _actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
+            await _actual.Should().ThrowExactlyAsync<GenreIdNotFoundException>();
         }
 
 

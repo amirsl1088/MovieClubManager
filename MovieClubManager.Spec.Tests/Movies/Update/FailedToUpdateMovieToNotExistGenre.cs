@@ -14,14 +14,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Movies
+namespace MovieClubManager.Spec.Tests.Movies.Update
 {
     [Scenario("عدم امکان ویرایش کردن فیلم")]
     [Story("",
 AsA = "مدیر کلاب ",
 IWantTo = "فیلمی را ویرایش کنم  ",
 InOrderTo = "اطلاعات ان را را ویرایش کنم")]
-    public class FailedToUpdateMovieToNotExistGenre:BusinessIntegrationTest
+    public class FailedToUpdateMovieToNotExistGenre : BusinessIntegrationTest
     {
         private readonly MovieManagerService _sut;
         private Movie _movie;
@@ -74,7 +74,7 @@ InOrderTo = "اطلاعات ان را را ویرایش کنم")]
             dto.Duration = 120;
             dto.Director = "نولان";
 
-            _actual =  ()=> _sut.Update(_movie.Id, dto);
+            _actual = () => _sut.Update(_movie.Id, dto);
         }
 
         [Then("فیلم مذکور نباید به نام ایتراستلار" +

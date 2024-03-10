@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace MovieClubManager.Spec.Tests.Users
+namespace MovieClubManager.Spec.Tests.Users.Delete
 {
 
     [Scenario("حذف کردن کردن کاربر")]
@@ -19,7 +19,7 @@ namespace MovieClubManager.Spec.Tests.Users
 AsA = "کاربر ",
 IWantTo = " یک کاربر حذف کنم  ",
 InOrderTo = "اطلاعات آن را حذف کنم")]
-    public class DeleteUserTest:BusinessIntegrationTest
+    public class DeleteUserTest : BusinessIntegrationTest
     {
         private readonly UserService _sut;
         private User _user;
@@ -58,9 +58,9 @@ InOrderTo = "اطلاعات آن را حذف کنم")]
         [Then("کاربر مذکور باید حذف شده باشد")]
         private void Then()
         {
-            var actual = ReadContext.Users.FirstOrDefault(_=>_.Id==_user.Id);
+            var actual = ReadContext.Users.FirstOrDefault(_ => _.Id == _user.Id);
             actual.Should().BeNull();
-           
+
 
         }
 
